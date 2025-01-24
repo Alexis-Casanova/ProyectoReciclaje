@@ -56,6 +56,7 @@ public class Usuario {
                byte[] hash = digest.digest(passString.getBytes(StandardCharsets.UTF_8));
 
                // Convertimos cada byte del array en su representación hexadecimal
+
                StringBuilder hexString = new StringBuilder();
                for (byte b : hash) {
                     // %02x formatea el byte en hexadecimal, con 2 dígitos y relleno de cero en caso necesario
