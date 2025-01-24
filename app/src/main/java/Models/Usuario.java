@@ -13,10 +13,11 @@ public class Usuario {
      protected String lugar;
      protected String contrasena;
      protected String rol;
+     protected int recompensa;
      protected String rutaUsuario;
 
      public Usuario(int idUsuario, String nombre, String email, String dni, String lugar,
-                    String contrasenaEnTextoPlano, String rol, String rutaUsuario) {
+                    String contrasenaEnTextoPlano, String rol,int recompensa, String rutaUsuario) {
           this.idUsuario = idUsuario;
           this.nombre = nombre;
           this.email = email;
@@ -24,11 +25,12 @@ public class Usuario {
           this.lugar = lugar;
           this.contrasena = getSHA256(contrasenaEnTextoPlano);
           this.rol = rol;
+          this.recompensa = recompensa;
           this.rutaUsuario = rutaUsuario;
      }
 
      public Usuario(int idUsuario, String nombre, String email, String dni, String lugar,
-                    String contrasenaEnTextoPlano, String rol) {
+                    String contrasenaEnTextoPlano, String rol,int recompensa) {
           this.idUsuario = idUsuario;
           this.nombre = nombre;
           this.email = email;
@@ -36,6 +38,7 @@ public class Usuario {
           this.lugar = lugar;
           this.contrasena = getSHA256(contrasenaEnTextoPlano);
           this.rol = rol;
+          this.recompensa = recompensa;
      }
 
      public Usuario() {
