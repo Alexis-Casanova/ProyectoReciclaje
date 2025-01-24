@@ -70,7 +70,7 @@ public class Usuario {
 
      @Override
      public String toString() {
-          return nombre + " rol: '" + rol + "' " + rutaUsuario;
+          return nombre + " rol: '" + rol + "'  " + rutaUsuario;
      }
 
      public int getIdUsuario() {
