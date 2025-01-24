@@ -27,7 +27,7 @@ public class Evento {
                 descripcion + '\'' +
                 ", lugar: '" + lugar + '\'' +
                 ", fecha: '" + fecha + '\'' +
-                ", organizado por: '" + organizador;
+                ", organizado por : '" + organizador;
     }
 
     public int getId() {
