@@ -17,7 +17,7 @@ public class Usuario {
      protected String rutaUsuario;
 
      public Usuario(int idUsuario, String nombre, String email, String dni, String lugar,
-                    String contrasenaEnTextoPlano, String rol,int recompensa, String rutaUsuario) {
+                    String contrasenaEnTextoPlano, String rol, int recompensa, String rutaUsuario) {
           this.idUsuario = idUsuario;
           this.nombre = nombre;
           this.email = email;
@@ -73,7 +73,15 @@ public class Usuario {
 
      @Override
      public String toString() {
-          return nombre + " rol: '" + rol + "'  " + rutaUsuario;
+          return nombre + " rol: '" + rol +" Con recompensas: "+ recompensa + "'  " + rutaUsuario;
+     }
+
+     public int getRecompensa() {
+          return recompensa;
+     }
+
+     public void setRecompensa(int recompensa) {
+          this.recompensa = recompensa;
      }
 
      public int getIdUsuario() {
