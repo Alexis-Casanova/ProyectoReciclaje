@@ -39,11 +39,7 @@ public class Publicacion {
 
     @Override
     public String toString() {
-        return "Publicacion con id de Publicacion:(" + idPublicacion +
-                "), contenido: '" + contenido + '\'' +
-                ", lugar: '" + lugar + '\'' +
-                ", fecha: '" + fecha + '\'' +
-                ", tipo: '" + tipo + '\'' + rutaPublicacion;
+        return "("+idPublicacion+"), "+ contenido + ", " + fecha +", " +tipo;
     }
 
     public int getIdPublicacion() {
