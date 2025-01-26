@@ -16,4 +16,9 @@
         <item name="android:textSize">20sp</item>
         <item name="fontFamily">sans-serif-condensed-light</item>
     </style>
+
+    <style name="post">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">35px</item>
+    </style>
 </resources>
