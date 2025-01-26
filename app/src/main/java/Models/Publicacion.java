@@ -39,7 +39,7 @@ public class Publicacion {
 
     @Override
     public String toString() {
-        return "("+idPublicacion+"), "+ contenido + ", " + fecha +", " +tipo;
+        return "("+idPublicacion+") "+ contenido + ", " + fecha +", " +tipo;
     }
 
     public int getIdPublicacion() {

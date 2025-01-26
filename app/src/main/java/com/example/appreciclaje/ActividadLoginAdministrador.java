@@ -63,7 +63,10 @@ public class ActividadLoginAdministrador extends AppCompatActivity {
                     for (Usuario oU:
                             listaUsarios) {
                         if(oU.getEmail().equalsIgnoreCase(email)){
-                            if(oU.getContrasena().equalsIgnoreCase(pass)){
+                            Usuario aux = new Usuario();
+                            aux.setContrasena(pass);
+
+                            if(oU.getContrasena().equalsIgnoreCase(aux.getContrasena())){
                                 usuarioLoggeado = oU;
                                 break;
                             }
