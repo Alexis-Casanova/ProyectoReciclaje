@@ -5,6 +5,7 @@ package Network;
 import java.util.List;
 
 import Models.Publicacion;
+import Models.Usuario;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
@@ -23,4 +24,7 @@ public interface ApiServicioReciclaje {
     // Falta el PU y DELETE para Publicaciones
 
     // ACA LOS DEMAS PARA LAS DOS TABLAS QUE FALTAN
+
+    @GET("Usuarios")
+    Call<List<Usuario>> getUsuarios();
 }
