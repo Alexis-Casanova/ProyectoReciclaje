@@ -1,7 +1,11 @@
 package com.example.appreciclaje;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,14 +26,33 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
+    ImageButton btn_loginUser, btn_loginAdmi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         lv_postMain = findViewById(R.id.lv_post);
+        btn_loginAdmi=findViewById(R.id.btn_admi);
+        btn_loginUser=findViewById(R.id.btn_usuario);
 
         mostrarPublicaciones();
 
+        btn_loginUser.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent oIntento = new Intent(MainActivity.this, ActividadLoginUsuario.class);
+                startActivity(oIntento);
+            }
+        });
+
+        btn_loginAdmi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent oIntento = new Intent(MainActivity.this, ActividadLoginAdministrador.class);
+                startActivity(oIntento);
+            }
+        });
     }
 
     private void mostrarPublicaciones() {
