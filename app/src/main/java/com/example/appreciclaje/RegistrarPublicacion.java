@@ -68,13 +68,11 @@ public class RegistrarPublicacion extends AppCompatActivity {
     }
 
     private void configurarSpinners() {
-        // Configurar valores para el primer spinner
         String[] tipos = {"Consejo", "Reciclar"};
         ArrayAdapter<String> adapterTipo = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipos);
         adapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spTipoPost.setAdapter(adapterTipo);
 
-        // Configurar valores para el segundo spinner
         String[] lugares = {"San Sebastian", "San Mateo", "San Pedro"};
         ArrayAdapter<String> adapterLugar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lugares);
         adapterLugar.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
