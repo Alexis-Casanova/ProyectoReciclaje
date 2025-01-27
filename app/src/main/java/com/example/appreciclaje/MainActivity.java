@@ -30,7 +30,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
-    ImageButton btn_loginUser, btn_loginAdmi, btn_registro;
+    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_registrarPost;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
         btn_loginAdmi=findViewById(R.id.btn_admi);
         btn_loginUser=findViewById(R.id.btn_usuario);
         btn_registro = findViewById(R.id.btn_registro);
+        btn_registrarPost = findViewById(R.id.btn_agregarPost);
 
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},0);
@@ -60,6 +61,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(oIntento);
         });
 
+        btn_registrarPost.setOnClickListener(v -> {
+            Intent oIntento = new Intent(MainActivity.this, RegistrarPublicacion.class);
+            startActivity(oIntento);
+        });
+
+        mostrarPublicaciones();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         mostrarPublicaciones();
     }
 
