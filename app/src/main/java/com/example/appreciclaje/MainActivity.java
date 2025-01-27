@@ -1,6 +1,7 @@
 package com.example.appreciclaje;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,6 +12,8 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -26,7 +29,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
-    ImageButton btn_loginUser, btn_loginAdmi;
+    ImageButton btn_loginUser, btn_loginAdmi, btn_registro;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +38,13 @@ public class MainActivity extends AppCompatActivity {
         lv_postMain = findViewById(R.id.lv_post);
         btn_loginAdmi=findViewById(R.id.btn_admi);
         btn_loginUser=findViewById(R.id.btn_usuario);
+        btn_registro = findViewById(R.id.btn_registro);
 
         mostrarPublicaciones();
+
+        if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
+            ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},0);
+        }
 
         btn_loginUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,6 +61,14 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(oIntento);
             }
         });
+        btn_registro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent oIntento = new Intent(MainActivity.this, RegistrarUsuario.class);
+                startActivity(oIntento);
+            }
+        });
+
     }
 
     private void mostrarPublicaciones() {

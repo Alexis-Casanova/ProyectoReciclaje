@@ -6,11 +6,15 @@ import java.util.List;
 
 import Models.Publicacion;
 import Models.Usuario;
+import ViewModels.RespuestaObtenida;
+import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
+import retrofit2.http.Part;
 
 public interface ApiServicioReciclaje {
 
@@ -27,4 +31,11 @@ public interface ApiServicioReciclaje {
 
     @GET("Usuarios")
     Call<List<Usuario>> getUsuarios();
+
+    @POST("Usuarios")
+    Call<Usuario> PostUsuarios(@Body Usuario usuario);
+
+    @Multipart
+    @POST("Usuarios/UploadImage")
+    Call<RespuestaObtenida> respuestaImagen(@Part MultipartBody.Part file);
 }
