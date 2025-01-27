@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
+import Adapters.AdapterPublicacion;
 import Models.Publicacion;
 import Network.ApiServicioReciclaje;
 import Network.RetrofitClient;
@@ -40,35 +41,26 @@ public class MainActivity extends AppCompatActivity {
         btn_loginUser=findViewById(R.id.btn_usuario);
         btn_registro = findViewById(R.id.btn_registro);
 
-        mostrarPublicaciones();
-
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},0);
         }
 
-        btn_loginUser.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent oIntento = new Intent(MainActivity.this, ActividadLoginUsuario.class);
-                startActivity(oIntento);
-            }
+        btn_loginUser.setOnClickListener(v -> {
+            Intent oIntento = new Intent(MainActivity.this, ActividadLoginUsuario.class);
+            startActivity(oIntento);
         });
 
-        btn_loginAdmi.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent oIntento = new Intent(MainActivity.this, ActividadLoginAdministrador.class);
-                startActivity(oIntento);
-            }
-        });
-        btn_registro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent oIntento = new Intent(MainActivity.this, RegistrarUsuario.class);
-                startActivity(oIntento);
-            }
+        btn_loginAdmi.setOnClickListener(v -> {
+            Intent oIntento = new Intent(MainActivity.this, ActividadLoginAdministrador.class);
+            startActivity(oIntento);
         });
 
+        btn_registro.setOnClickListener(v -> {
+            Intent oIntento = new Intent(MainActivity.this, RegistrarUsuario.class);
+            startActivity(oIntento);
+        });
+
+        mostrarPublicaciones();
     }
 
     private void mostrarPublicaciones() {
@@ -80,7 +72,9 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Publicacion>> call, Response<List<Publicacion>> response) {
                 if(response.isSuccessful() && response.body()!=null){
                     List<Publicacion> listaPublicaciones = response.body();
-                    lv_postMain.setAdapter(new ArrayAdapter<Publicacion>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, listaPublicaciones));
+                    //lv_postMain.setAdapter(new ArrayAdapter<Publicacion>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, listaPublicaciones));
+                    AdapterPublicacion adapter = new AdapterPublicacion(MainActivity.this, listaPublicaciones);
+                    lv_postMain.setAdapter(adapter);
                 } else{
                     Toast.makeText(MainActivity.this, "No se pudo conectar", Toast.LENGTH_SHORT).show();
                 }
