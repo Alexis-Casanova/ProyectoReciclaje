@@ -16,9 +16,13 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Locale;
 
 import Models.Publicacion;
+import Models.Usuario;
+import Sesiones.SessionManager;
 import ViewModels.RespuestaObtenida;
 import Network.ApiServicioReciclaje;
 import Network.RetrofitClient;
@@ -35,6 +39,7 @@ public class RegistrarPublicacion extends AppCompatActivity {
     ImageView imgPost;
     Button btnPostear;
     private String rutaImagenSeleccionada;
+    private Usuario usuarioLogeado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +53,15 @@ public class RegistrarPublicacion extends AppCompatActivity {
         btnPostear = findViewById(R.id.btn_postear);
 
         configurarSpinners();
+
+        SessionManager sessionManager = new SessionManager(this);
+        usuarioLogeado = sessionManager.getUsuarioDetalles();
+
+        if (usuarioLogeado == null) {
+            Toast.makeText(this, "Debe iniciar sesión para publicar.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
         
         imgPost.setOnClickListener(v -> seleccionarImagen());
         btnPostear.setOnClickListener(v -> obtenerRutaExterna());
@@ -133,17 +147,17 @@ public class RegistrarPublicacion extends AppCompatActivity {
         String lugarPost = spLugarPost.getSelectedItem().toString().toLowerCase();
         String descripcionPost = etDescripcionPost.getText().toString();
 
-        // Crear instancia del usuario (esto debería reemplazarse con datos reales del usuario autenticado)
-        int usuarioId = 8; // Ejemplo: usuarioId puede venir de SharedPreferences o una variable global
+        int usuarioId = usuarioLogeado.getIdUsuario();
+        String fechaActual = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(Calendar.getInstance().getTime());
         Publicacion publicacion = new Publicacion(
                 0,
                 descripcionPost,
                 lugarPost,
-                "2025-01-26", // Fecha actual (puedes obtenerla dinámicamente si lo prefieres)
+                fechaActual,
                 tipoPost,
                 rutaImagenSubida,
                 usuarioId,
-                null // Asume que el usuario ya está referenciado por usuarioId
+                null
         );
 
         ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);

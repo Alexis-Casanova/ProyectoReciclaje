@@ -1,6 +1,7 @@
 package com.example.appreciclaje;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -77,6 +78,8 @@ public class ActividadLoginAdministrador extends AppCompatActivity {
                             SessionManager sessionManager = new SessionManager(ActividadLoginAdministrador.this);
                             sessionManager.crearLoginSession(usuarioLoggeado);
                             Toast.makeText(ActividadLoginAdministrador.this, "Bienvenido JEFE!!! " + usuarioLoggeado.getNombre(), Toast.LENGTH_SHORT).show();
+                            Intent oIntento = new Intent(ActividadLoginAdministrador.this, ActividadInicioAdmin.class);
+                            startActivity(oIntento);
                         } else{
                             Toast.makeText(ActividadLoginAdministrador.this, "Tu rol no es 'administrador'. Verifica tus credenciales", Toast.LENGTH_SHORT).show();
                         }
