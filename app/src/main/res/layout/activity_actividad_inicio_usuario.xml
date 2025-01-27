@@ -7,4 +7,84 @@
     android:layout_height="match_parent"
     tools:context=".ActividadInicioUsuario">
 
+    <ImageButton
+        android:id="@+id/btn_editar_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_weight="1"
+        android:backgroundTint="#FDFDFD"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_usuario"
+        app:srcCompat="@drawable/baseline_admin_panel_settings_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_agregar_postUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="64dp"
+        android:layout_weight="1"
+        android:backgroundTint="#FDFDFD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_usuario_post"
+        app:srcCompat="@drawable/baseline_add_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_detalleUsuario"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        android:layout_weight="1"
+        android:backgroundTint="#FDFDFD"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_usuario"
+        app:srcCompat="@drawable/baseline_account_circle_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/txt_titulo_usuario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="Bienvenido, @Usuario"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/sp_usuario_barrio"
+        android:layout_width="300dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="88dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_usuario" />
+
+    <ListView
+        android:id="@+id/lv_usuario_post"
+        android:layout_width="395dp"
+        android:layout_height="350dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sp_usuario_barrio" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="¿Qué estás pensando?"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lv_usuario_post" />
 </androidx.constraintlayout.widget.ConstraintLayout>

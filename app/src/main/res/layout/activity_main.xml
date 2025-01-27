@@ -141,18 +141,4 @@
         app:srcCompat="@drawable/baseline_calendar_month_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <ImageButton
-        android:id="@+id/btn_agregarPost"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="96dp"
-        android:backgroundTint="#ffffff"
-        app:layout_constraintEnd_toStartOf="@+id/btn_ubi"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/btn_admi"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
-        app:srcCompat="@android:drawable/ic_menu_add"
-        tools:ignore="SpeakableTextPresentCheck" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -53,6 +53,7 @@ public class RegistrarPublicacion extends AppCompatActivity {
         btnPostear = findViewById(R.id.btn_postear);
 
         configurarSpinners();
+        verificarSesion();
 
         SessionManager sessionManager = new SessionManager(this);
         usuarioLogeado = sessionManager.getUsuarioDetalles();
@@ -65,6 +66,9 @@ public class RegistrarPublicacion extends AppCompatActivity {
         
         imgPost.setOnClickListener(v -> seleccionarImagen());
         btnPostear.setOnClickListener(v -> obtenerRutaExterna());
+    }
+
+    private void verificarSesion() {
     }
 
     private void configurarSpinners() {
