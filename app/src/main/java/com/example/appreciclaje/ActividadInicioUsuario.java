@@ -38,7 +38,6 @@ public class ActividadInicioUsuario extends AppCompatActivity {
         txt_tituloUsuario = findViewById(R.id.txt_titulo_usuario);
         btn_agregarPostUsuario = findViewById(R.id.btn_agregar_postUsuario);
         btn_detalleUsuario = findViewById(R.id.btn_detalleUsuario);
-        btn_editarUsuario = findViewById(R.id.btn_editar_usuario);
 
         btn_detalleUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(ActividadInicioUsuario.this, DetalleUsuario.class);
@@ -47,11 +46,6 @@ public class ActividadInicioUsuario extends AppCompatActivity {
 
         btn_agregarPostUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(ActividadInicioUsuario.this, RegistrarPublicacion.class);
-            startActivity(oIntento);
-        });
-
-        btn_editarUsuario.setOnClickListener(v -> {
-            Intent oIntento = new Intent(ActividadInicioUsuario.this, EditarUsuario.class);
             startActivity(oIntento);
         });
     }
