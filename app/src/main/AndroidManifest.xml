@@ -17,6 +17,12 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
+            android:name=".ActividadCalendario"
+            android:exported="false" />
+        <activity
+            android:name=".ActividadDetalleEvento"
+            android:exported="false" />
+        <activity
             android:name=".ActividadInicioUsuario"
             android:exported="false" />
         <activity
