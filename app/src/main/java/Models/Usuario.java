@@ -41,6 +41,19 @@ public class Usuario {
           this.recompensa = recompensa;
      }
 
+     public Usuario(int idUsuario, String nombre, String email, String dni, String lugar, String rol, int recompensa, String rutaUsuario,
+                    String contrasenaEnTextoPlano) {
+          this.idUsuario = idUsuario;
+          this.nombre = nombre;
+          this.email = email;
+          this.dni = dni;
+          this.lugar = lugar;
+          this.rol = rol;
+          this.recompensa = recompensa;
+          this.rutaUsuario = rutaUsuario;
+          this.contrasena = contrasenaEnTextoPlano;
+     }
+
      public Usuario() {
      }
 
@@ -126,6 +139,10 @@ public class Usuario {
       */
      public String getContrasena() {
           return contrasena;
+     }
+
+     public void setContrasenaText(String contrasena) {
+          this.contrasena = contrasena;
      }
 
      /**

@@ -12,6 +12,7 @@ public class SessionManager {
     private static final String EMAIL = "email";
     private static final String DNI = "dni";
     private static final String LUGAR = "lugar";
+    private static final String CONTRASENA = "contrasena";
     private static final String ROL = "rol";
     private static final String RECOMPENSA = "recompensa";
     private static final String RUTAUSUARIO = "rutaUsuario";
@@ -32,6 +33,7 @@ public class SessionManager {
         editor.putString(EMAIL, oU.getEmail());
         editor.putString(DNI, oU.getDni());
         editor.putString(LUGAR, oU.getLugar());
+        editor.putString(CONTRASENA, oU.getContrasena());
         editor.putString(ROL, oU.getRol());
         editor.putInt(RECOMPENSA, oU.getRecompensa());
         editor.putString(RUTAUSUARIO, oU.getRutaUsuario());
@@ -45,6 +47,7 @@ public class SessionManager {
         oU.setEmail(pref.getString(EMAIL, null));
         oU.setDni(pref.getString(DNI, null));
         oU.setLugar(pref.getString(LUGAR, null));
+        oU.setContrasenaText(pref.getString(CONTRASENA, null));
         oU.setRol(pref.getString(ROL, null));
         oU.setRecompensa(pref.getInt(RECOMPENSA, 0));
         oU.setRutaUsuario(pref.getString(RUTAUSUARIO, null));

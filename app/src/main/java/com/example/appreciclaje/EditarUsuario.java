@@ -110,7 +110,10 @@ public class EditarUsuario extends AppCompatActivity {
         String lugar = txtLugar.getText().toString();
         String dni = txtDni.getText().toString();
 
-        Usuario usuarioActualizado = new Usuario(usuarioId,nombre, usuarioLogeado.getEmail(), dni,lugar,usuarioLogeado.getContrasena(),usuarioLogeado.getRol(),usuarioLogeado.getRecompensa(), rutaImagenSeleccionada);
+        Usuario usuarioActualizado = new Usuario(
+                usuarioId, nombre, usuarioLogeado.getEmail(), dni, lugar,
+                usuarioLogeado.getRol(), usuarioLogeado.getRecompensa(), usuarioLogeado.getRutaUsuario(),usuarioLogeado.getContrasena()
+        );
 
         ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
 
