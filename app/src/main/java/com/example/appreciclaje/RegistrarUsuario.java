@@ -5,7 +5,6 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -28,7 +27,7 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 public class RegistrarUsuario extends AppCompatActivity {
-    EditText txtNomRegistro, txtLugarRegistro, txtNaciRegistro, txtEmailRegistro, txtDNIRegistro, txtContraRegistro;
+    EditText txtNomRegistro, txtLugarRegistro, txtEmailRegistro, txtDNIRegistro, txtContraRegistro;
     Button btnRegistro;
     ImageView imgUsuarioRegistro;
     private String rutaImagenSeleccionada;
@@ -38,14 +37,13 @@ public class RegistrarUsuario extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrar_usuario);
 
-        txtNomRegistro = findViewById(R.id.txtNomRegistro);
-        txtLugarRegistro = findViewById(R.id.txtLugar);
-        txtNaciRegistro = findViewById(R.id.txtNaciRegistro);
-        txtEmailRegistro = findViewById(R.id.txtEmailRegistro);
-        txtDNIRegistro = findViewById(R.id.txtDNIRegistro);
-        txtContraRegistro = findViewById(R.id.txtContraRegistro);
-        btnRegistro = findViewById(R.id.btnRegistro);
-        imgUsuarioRegistro = findViewById(R.id.imgUsuarioRegistro);
+        txtNomRegistro = findViewById(R.id.txtNombreUsuarioRegistrar);
+        txtLugarRegistro = findViewById(R.id.txtLugarRegistrarUsuario);
+        txtEmailRegistro = findViewById(R.id.txtEmailRegistrarUsuario);
+        txtDNIRegistro = findViewById(R.id.txtDNIRegistrarUsuario);
+        txtContraRegistro = findViewById(R.id.txtContraRegistrarUsuario);
+        btnRegistro = findViewById(R.id.btnRegistrarUsuario);
+        imgUsuarioRegistro = findViewById(R.id.imgRegistrarUsuario);
 
         imgUsuarioRegistro.setOnClickListener(v -> seleccionarImagen());
         btnRegistro.setOnClickListener(v -> obtenerRutaExterna());

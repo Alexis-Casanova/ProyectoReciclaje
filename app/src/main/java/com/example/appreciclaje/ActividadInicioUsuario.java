@@ -49,6 +49,11 @@ public class ActividadInicioUsuario extends AppCompatActivity {
             Intent oIntento = new Intent(ActividadInicioUsuario.this, RegistrarPublicacion.class);
             startActivity(oIntento);
         });
+
+        btn_editarUsuario.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioUsuario.this, EditarUsuario.class);
+            startActivity(oIntento);
+        });
     }
 
     @Override

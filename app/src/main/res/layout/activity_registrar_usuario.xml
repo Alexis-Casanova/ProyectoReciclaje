@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="169dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="44dp"
         android:layout_marginEnd="170dp"
         android:text="Registrarse"
         app:layout_constraintEnd_toEndOf="parent"
@@ -21,59 +21,49 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/txtNomRegistro"
+        android:id="@+id/txtNombreUsuarioRegistrar"
         android:layout_width="217dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="96dp"
-        android:layout_marginTop="44dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="40dp"
         android:ems="10"
         android:hint="Nombres"
         android:inputType="text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <EditText
-        android:id="@+id/txtLugar"
-        android:layout_width="144dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="108dp"
-        android:layout_marginEnd="60dp"
+        android:id="@+id/txtLugarRegistrarUsuario"
+        android:layout_width="217dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="28dp"
         android:ems="10"
         android:hint="Barrio"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
-
-    <EditText
-        android:id="@+id/txtNaciRegistro"
-        android:layout_width="136dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="48dp"
-        android:layout_marginTop="108dp"
-        android:ems="10"
-        android:hint="Fecha Nacimiento"
-        android:inputType="text"
-        android:minHeight="48dp"
+        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/txtNombreUsuarioRegistrar" />
 
     <EditText
-        android:id="@+id/txtEmailRegistro"
+        android:id="@+id/txtEmailRegistrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="101dp"
         android:ems="10"
         android:hint="Ingresa email"
         android:inputType="text"
         android:minHeight="48dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNaciRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/txtLugarRegistrarUsuario" />
 
     <EditText
-        android:id="@+id/txtDNIRegistro"
+        android:id="@+id/txtDNIRegistrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -86,10 +76,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/txtEmailRegistrarUsuario" />
 
     <EditText
-        android:id="@+id/txtContraRegistro"
+        android:id="@+id/txtContraRegistrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="100dp"
@@ -102,10 +92,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDNIRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/txtDNIRegistrarUsuario" />
 
     <Button
-        android:id="@+id/btnRegistro"
+        android:id="@+id/btnRegistrarUsuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="145dp"
@@ -115,10 +105,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgUsuarioRegistro" />
+        app:layout_constraintTop_toBottomOf="@+id/imgRegistrarUsuario" />
 
     <ImageView
-        android:id="@+id/imgUsuarioRegistro"
+        android:id="@+id/imgRegistrarUsuario"
         android:layout_width="110dp"
         android:layout_height="110dp"
         android:layout_marginStart="141dp"
@@ -126,6 +116,6 @@
         android:layout_marginEnd="142dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContraRegistro"
+        app:layout_constraintTop_toBottomOf="@+id/txtContraRegistrarUsuario"
         tools:srcCompat="@tools:sample/avatars" />
 </androidx.constraintlayout.widget.ConstraintLayout>

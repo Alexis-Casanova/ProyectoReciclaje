@@ -15,6 +15,7 @@ import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.PUT;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 
 public interface ApiServicioReciclaje {
 
@@ -38,4 +39,8 @@ public interface ApiServicioReciclaje {
     @Multipart
     @POST("Usuarios/UploadImage")
     Call<RespuestaObtenida> respuestaImagen(@Part MultipartBody.Part file);
+
+    // Actualizar un usuario existente
+    @PUT("Usuarios/{id}")
+    Call<Usuario> actualizarUsuario(@Path("id") int idUsuario, @Body Usuario usuario);
 }
