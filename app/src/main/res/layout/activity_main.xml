@@ -141,4 +141,15 @@
         app:srcCompat="@drawable/baseline_calendar_month_24"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <ImageButton
+        android:id="@+id/btn_agregarEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:layout_constraintEnd_toStartOf="@+id/btn_ubi"
+        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintStart_toEndOf="@+id/btn_admi"
+        app:layout_constraintTop_toBottomOf="@+id/tv_title"
+        app:srcCompat="@drawable/baseline_add_24" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

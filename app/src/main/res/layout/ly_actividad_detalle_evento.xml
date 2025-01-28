@@ -100,7 +100,7 @@
                 android:text="Lugar:" />
 
             <TextView
-                android:id="@+id/lb_fechaEventoDet"
+                android:id="@+id/lb_lugarEventoDet"
                 style="@style/evento"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"

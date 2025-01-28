@@ -4,6 +4,7 @@ package Network;
 
 import java.util.List;
 
+import Models.Evento;
 import Models.Publicacion;
 import Models.Usuario;
 import ViewModels.RespuestaObtenida;
@@ -26,6 +27,8 @@ public interface ApiServicioReciclaje {
     @POST("Publicaciones")
     Call<Publicacion> PostPublicaciones(@Body Publicacion publicacion);
 
+
+
     // Falta el PU y DELETE para Publicaciones
 
     // ACA LOS DEMAS PARA LAS DOS TABLAS QUE FALTAN
@@ -43,4 +46,16 @@ public interface ApiServicioReciclaje {
     // Actualizar un usuario existente
     @PUT("Usuarios/{id}")
     Call<Usuario> actualizarUsuario(@Path("id") int idUsuario, @Body Usuario usuario);
+
+    @GET("Eventos")
+    Call<List<Evento>> getEventos();
+
+    @POST("Eventos")
+    Call<Evento> PostEventos(@Body Evento evento);
+
+    @PUT("Eventos/{id}")
+    Call<Evento> PutEventos(@Path("id") int idEvento, @Body Evento evento);
+
+    @retrofit2.http.DELETE("Eventos/{id}")
+    Call<Void> DeleteEventos(@Path("id") int idEvento);
 }
