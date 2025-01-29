@@ -6,11 +6,13 @@ import java.util.List;
 
 import Models.Evento;
 import Models.Publicacion;
+import Models.Punto;
 import Models.Usuario;
 import ViewModels.RespuestaObtenida;
 import okhttp3.MultipartBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
@@ -27,7 +29,19 @@ public interface ApiServicioReciclaje {
     @POST("Publicaciones")
     Call<Publicacion> PostPublicaciones(@Body Publicacion publicacion);
 
+    //Recupero una lista de Ubicaciones
+    @GET("Puntos")
+    Call<List<Punto>> getPuntos();
+    //Envio una Ubicacion:
+    @POST("Puntos")
+    Call<Punto> PostPuntos(@Body Punto punto);
+    // Editar una Ubicacion
+    @PUT("Puntos/{id}")
+    Call<Punto> PutPuntos(@Path("id") int id, @Body Punto punto);
 
+    // Eliminar una Ubicacion
+    @DELETE("Puntos/{id}")
+    Call<Void> DeletePuntos(@Path("id") int id);
 
     // Falta el PU y DELETE para Publicaciones
 

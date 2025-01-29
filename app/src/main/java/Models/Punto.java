@@ -1,12 +1,12 @@
 package Models;
 
 public class Punto {
-    private String idPunto;
+    private int idPunto;
     private String nombre;
     private String direccion;
     private String referencia;
 
-    public Punto(String idPunto, String nombre, String direccion, String referencia) {
+    public Punto(int idPunto, String nombre, String direccion, String referencia) {
         this.idPunto = idPunto;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -19,11 +19,11 @@ public class Punto {
         return nombre +", en: " + direccion;
     }
 
-    public String getIdPunto() {
+    public int getIdPunto() {
         return idPunto;
     }
 
-    public void setIdPunto(String idPunto) {
+    public void setIdPunto(int idPunto) {
         this.idPunto = idPunto;
     }
 

@@ -3,21 +3,14 @@ package com.example.appreciclaje;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import java.util.List;
 
@@ -31,13 +24,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
-    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento;
+    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento,btn_ubicaciones;
     Toolbar tb_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        btn_ubicaciones = findViewById(R.id.btn_ubi);
         lv_postMain = findViewById(R.id.lv_post);
         btn_loginAdmi=findViewById(R.id.btn_admi);
         btn_loginUser=findViewById(R.id.btn_usuario);
@@ -71,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         });
         btn_agregarEvento.setOnClickListener(v ->{
             Intent oIntento = new Intent(MainActivity.this, RegistrarEvento.class);
+            startActivity(oIntento);
+        });
+        btn_ubicaciones.setOnClickListener(v ->{
+            Intent oIntento = new Intent(MainActivity.this, ActividadPunto.class);
             startActivity(oIntento);
         });
 
