@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
@@ -31,6 +32,7 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
     ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento;
+    Toolbar tb_main;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +44,8 @@ public class MainActivity extends AppCompatActivity {
         btn_registro = findViewById(R.id.btn_registro);
         btn_calendar = findViewById(R.id.btn_calendar);
         btn_agregarEvento= findViewById(R.id.btn_agregarEvento);
+        tb_main = findViewById(R.id.tb_main);
+        setSupportActionBar(tb_main);
 
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},0);

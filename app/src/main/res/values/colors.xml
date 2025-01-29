@@ -5,4 +5,8 @@
     <color name="primary">#82db92</color>
     <color name="primarydark">#4eb662</color>
     <color name="accent">#b5ffc2</color>
+    <color name="background">#F5F5F5</color>
+    <color name="textPrimary">#333333</color>
+    <color name="buttonColor">#4eb662</color>
+    <color name="greyLight">#D3D3D3</color>
 </resources>
