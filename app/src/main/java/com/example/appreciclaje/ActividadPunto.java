@@ -2,6 +2,7 @@ package com.example.appreciclaje;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,7 +22,8 @@ import retrofit2.Response;
 public class ActividadPunto extends AppCompatActivity {
 
     ListView lv_Puntos;
-    Button btn_NuevoPunto, btn_EliminarPunto;
+    Button btn_NuevoPunto;
+    private List<Punto> listaPuntos;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +32,20 @@ public class ActividadPunto extends AppCompatActivity {
 
         lv_Puntos = findViewById(R.id.lv_Punto);
         btn_NuevoPunto = findViewById(R.id.btn_NuevoPunto);
-        btn_EliminarPunto = findViewById(R.id.btn_EliminarPunto);
 
         btn_NuevoPunto.setOnClickListener(v -> {
             Intent oIntento = new Intent(ActividadPunto.this, RegistrarPunto.class);
             startActivity(oIntento);
+        });
+
+        lv_Puntos.setOnItemClickListener((parent, view, position, id) -> {
+            Punto punto = listaPuntos.get(position);
+            Intent intent = new Intent(ActividadPunto.this, ActividadDetallePunto.class);
+            intent.putExtra("id", punto.getIdPunto());
+            intent.putExtra("nombre", punto.getNombre());
+            intent.putExtra("direccion", punto.getDireccion());
+            intent.putExtra("referencia", punto.getReferencia());
+            startActivity(intent);
         });
 
         mostrarPuntos();
@@ -53,7 +64,7 @@ public class ActividadPunto extends AppCompatActivity {
             @Override
             public void onResponse(Call<List<Punto>> call, Response<List<Punto>> response) {
                 if (response.isSuccessful() && response.body() != null) {
-                    List<Punto> listaPuntos = response.body();
+                    listaPuntos = response.body();
                     AdapterPunto adapter = new AdapterPunto(ActividadPunto.this, listaPuntos);
                     lv_Puntos.setAdapter(adapter);
                 } else {
