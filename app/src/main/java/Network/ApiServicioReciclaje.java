@@ -47,6 +47,9 @@ public interface ApiServicioReciclaje {
     @PUT("Usuarios/{id}")
     Call<Usuario> actualizarUsuario(@Path("id") int idUsuario, @Body Usuario usuario);
 
+    @GET("Usuarios/{id}")
+    Call<Usuario> obtenerUsuarioPorId(@Path("id") int idUsuario);
+
     @GET("Eventos")
     Call<List<Evento>> getEventos();
 

@@ -40,6 +40,7 @@ public class EditarUsuario extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ly_editar_usuario);
+
         txtNombre = findViewById(R.id.txtNombreEditarUsuario);
         txtLugar = findViewById(R.id.txtLugarEditarUsuario);
         txtDni = findViewById(R.id.txtDNIEditarUsuario);
@@ -56,6 +57,7 @@ public class EditarUsuario extends AppCompatActivity {
         }
 
         cargarDatosUsuario();
+
         imgUsuario.setOnClickListener(v -> seleccionarImagen());
         btnActualizar.setOnClickListener(v -> actualizarUsuario());
     }
@@ -112,7 +114,7 @@ public class EditarUsuario extends AppCompatActivity {
 
         Usuario usuarioActualizado = new Usuario(
                 usuarioId, nombre, usuarioLogeado.getEmail(), dni, lugar,
-                usuarioLogeado.getRol(), usuarioLogeado.getRecompensa(), usuarioLogeado.getRutaUsuario(),usuarioLogeado.getContrasena()
+                usuarioLogeado.getRol(), usuarioLogeado.getRecompensa(), usuarioLogeado.getRutaUsuario(), usuarioLogeado.getContrasena()
         );
 
         ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
@@ -152,6 +154,12 @@ public class EditarUsuario extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(EditarUsuario.this, "Usuario actualizado correctamente.", Toast.LENGTH_SHORT).show();
+                    //SessionManager sessionManager = new SessionManager(EditarUsuario.this);
+                    //sessionManager.crearLoginSession(response.body());
+
+                    Intent intent = new Intent(EditarUsuario.this, DetalleUsuario.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
                     finish();
                 } else {
                     Toast.makeText(EditarUsuario.this, "Error al actualizar usuario. Código: " + response.code(), Toast.LENGTH_SHORT).show();

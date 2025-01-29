@@ -3,7 +3,6 @@ package com.example.appreciclaje;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,7 +12,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.bumptech.glide.Glide;
 
 import Models.Usuario;
+import Network.ApiServicioReciclaje;
+import Network.RetrofitClient;
 import Sesiones.SessionManager;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class DetalleUsuario extends AppCompatActivity {
     TextView txtNombre, txtBarrio, txtEmail, txtDNI, txtRecompensas;
@@ -35,27 +39,46 @@ public class DetalleUsuario extends AppCompatActivity {
         btn_canjearUsuario = findViewById(R.id.btnCanjearUsuario);
         btn_editarUsuario = findViewById(R.id.btnEditarUsuarioDetalle);
 
-        SessionManager sessionManager = new SessionManager(this);
-        usuarioLogeado = sessionManager.getUsuarioDetalles();
-
-        if (usuarioLogeado == null) {
-            Toast.makeText(this, "Debe iniciar sesión para ver los detalles del usuario.", Toast.LENGTH_SHORT).show();
-            finish();
-            return;
-        }
-
-        cargarDatosUsuario();
-
         btn_editarUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(DetalleUsuario.this, EditarUsuario.class);
             startActivity(oIntento);
         });
 
         btn_canjearUsuario.setOnClickListener(v -> {
-            Toast.makeText(this, "Recompensas canjeadas con éxito: " + usuarioLogeado.getRecompensa() + " puntos", Toast.LENGTH_SHORT).show();
-            // Aquí puedes implementar la lógica para reducir los puntos del usuario en la base de datos
+            Toast.makeText(this, "Recompensas canjeadas: " + usuarioLogeado.getRecompensa() + " puntos", Toast.LENGTH_SHORT).show();
         });
 
+        obtenerUsuarioDesdeServidor();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        obtenerUsuarioDesdeServidor();
+    }
+
+    private void obtenerUsuarioDesdeServidor() {
+        SessionManager sessionManager = new SessionManager(this);
+        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+
+        Call<Usuario> call = apiServicio.obtenerUsuarioPorId(sessionManager.getUsuarioDetalles().getIdUsuario());
+        call.enqueue(new Callback<Usuario>() {
+            @Override
+            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                if (response.isSuccessful() && response.body() != null) {
+                    usuarioLogeado = response.body();
+                    sessionManager.crearLoginSession(usuarioLogeado);
+                    cargarDatosUsuario();
+                } else {
+                    Toast.makeText(DetalleUsuario.this, "Error al obtener datos del usuario.", Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onFailure(Call<Usuario> call, Throwable t) {
+                Toast.makeText(DetalleUsuario.this, "Error al conectar con el servidor.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     private void cargarDatosUsuario() {
@@ -72,7 +95,7 @@ public class DetalleUsuario extends AppCompatActivity {
                     .error(R.drawable.error_image)
                     .into(imgUsuario);
         } else {
-            imgUsuario.setImageResource(R.drawable.placeholder_image); // Imagen predeterminada si no hay URL
+            imgUsuario.setImageResource(R.drawable.placeholder_image);
         }
     }
 }
