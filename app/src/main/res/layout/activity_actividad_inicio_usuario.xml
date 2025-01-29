@@ -7,96 +7,137 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:padding="16dp"
-    android:background="@color/white"
+    android:background="@drawable/backwhite"
     tools:context=".ActividadInicioUsuario">
 
     <TextView
         android:id="@+id/txt_titulo_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="¡Bienvenido, @Usuario!"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginTop="52dp"
+        android:fontFamily="sans-serif-light"
         android:paddingBottom="8dp"
-        tools:ignore="SpeakableTextPresentCheck" />
-
-    <Spinner
-        android:id="@+id/sp_usuario_barrio"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:layout_marginTop="30dp"
-        android:background="#FFFFFF"
-        android:clipToOutline="true"
-        android:elevation="4dp"
-        android:outlineProvider="bounds"
-        android:paddingHorizontal="16dp"
+        android:text="¡Bienvenido, @Usuario!"
+        android:textColor="@color/black"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_titulo_usuario" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ListView
         android:id="@+id/lv_usuario_post"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
+        android:layout_width="376dp"
+        android:layout_height="389dp"
         android:divider="@color/greyLight"
         android:dividerHeight="1dp"
         android:padding="8dp"
-        app:layout_constraintTop_toBottomOf="@id/sp_usuario_barrio"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/textView6" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView3"
+        app:layout_constraintVertical_bias="0.138" />
 
     <TextView
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif-light"
         android:text="¿Qué estás pensando?"
-        android:textSize="16sp"
         android:textColor="@color/black"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/lv_usuario_post"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_usuario_post" />
 
-    <ImageButton
-        android:id="@+id/btn_agregar_postUsuario"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
-        android:background="@color/white"
-        android:layout_marginTop="16dp"
-        android:elevation="4dp"
-        android:src="@drawable/baseline_add_circle_24"
-        android:contentDescription="Agregar publicación"
-        android:scaleType="centerInside"
-        android:clipToOutline="true"
-        android:outlineProvider="bounds"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView6"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/lv_usuario_post">
 
-    <ImageButton
-        android:id="@+id/btn_detalleUsuario"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:layout_margin="8dp"
-        android:background="@color/white"
-        android:elevation="2dp"
-        android:src="@drawable/baseline_account_circle_24"
-        android:contentDescription="Detalle usuario"
-        android:scaleType="centerInside"
-        android:clipToOutline="true"
-        android:outlineProvider="bounds"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/btn_agregar_postUsuario"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            android:clipToOutline="true"
+            android:contentDescription="Agregar publicación"
+            android:elevation="4dp"
+            android:outlineProvider="bounds"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_add_circle_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_detalleUsuario"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            android:clipToOutline="true"
+            android:contentDescription="Detalle usuario"
+            android:elevation="2dp"
+            android:outlineProvider="bounds"
+            android:scaleType="centerInside"
+            android:src="@drawable/baseline_account_circle_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="17dp"
+        android:layout_marginTop="25dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_titulo_usuario">
+
+        <Spinner
+            android:id="@+id/sp_usuario_barrio"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:background="#FFFFFF"
+            android:clipToOutline="true"
+            android:elevation="4dp"
+            android:outlineProvider="bounds"
+            android:paddingHorizontal="16dp" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="49dp"
+        android:layout_marginTop="16dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView3"
+        app:layout_constraintTop_toBottomOf="@+id/cardView2">
+
+        <ImageButton
+            android:id="@+id/btn_buscarUsuario"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/baseline_search_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
+

@@ -8,6 +8,7 @@ import android.provider.MediaStore;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -37,7 +38,7 @@ public class RegistrarPublicacion extends AppCompatActivity {
     Spinner spTipoPost, spLugarPost;
     EditText etDescripcionPost;
     ImageView imgPost;
-    Button btnPostear;
+    ImageButton btnPostear;
     private String rutaImagenSeleccionada;
     private Usuario usuarioLogeado;
 

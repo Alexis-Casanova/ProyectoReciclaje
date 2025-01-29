@@ -3,6 +3,7 @@ package com.example.appreciclaje;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -22,7 +23,7 @@ import retrofit2.Response;
 public class DetalleUsuario extends AppCompatActivity {
     TextView txtNombre, txtBarrio, txtEmail, txtDNI, txtRecompensas;
     ImageView imgUsuario;
-    Button btn_canjearUsuario, btn_editarUsuario;
+    ImageButton btn_canjearUsuario, btn_editarUsuario;
     private Usuario usuarioLogeado;
 
     @Override
@@ -36,8 +37,8 @@ public class DetalleUsuario extends AppCompatActivity {
         txtDNI = findViewById(R.id.txtDNIDetalleUsuario);
         txtRecompensas = findViewById(R.id.txtRecompensaDetalleUsuario);
         imgUsuario = findViewById(R.id.imgDetalleUsuario);
-        btn_canjearUsuario = findViewById(R.id.btnCanjearUsuario);
-        btn_editarUsuario = findViewById(R.id.btnEditarUsuarioDetalle);
+        btn_canjearUsuario = findViewById(R.id.btn_CanjearUsuario);
+        btn_editarUsuario = findViewById(R.id.btn_EditarUsuarioDetalle);
 
         btn_editarUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(DetalleUsuario.this, EditarUsuario.class);

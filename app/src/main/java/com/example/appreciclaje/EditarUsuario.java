@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,7 +33,7 @@ import retrofit2.Response;
 public class EditarUsuario extends AppCompatActivity {
     EditText txtNombre, txtLugar, txtDni;
     ImageView imgUsuario;
-    Button btnActualizar;
+    ImageButton btnActualizar;
     private String rutaImagenSeleccionada;
     private Usuario usuarioLogeado;
 

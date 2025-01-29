@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -28,7 +29,7 @@ import retrofit2.Response;
 
 public class RegistrarUsuario extends AppCompatActivity {
     EditText txtNomRegistro, txtLugarRegistro, txtEmailRegistro, txtDNIRegistro, txtContraRegistro;
-    Button btnRegistro;
+    ImageButton btnRegistro;
     ImageView imgUsuarioRegistro;
     private String rutaImagenSeleccionada;
 

@@ -35,4 +35,10 @@
         <item name="android:textColor">@color/black</item>
         <item name="android:textAlignment">center</item>
     </style>
+
+    <style name="tituloTodo">
+        <item name="fontFamily">sans-serif-light</item>
+        <item name="android:textSize">20dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
 </resources>

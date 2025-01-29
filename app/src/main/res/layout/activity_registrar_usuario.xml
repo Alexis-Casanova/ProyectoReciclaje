@@ -5,117 +5,175 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
     tools:context=".RegistrarUsuario">
 
     <TextView
         android:id="@+id/textView5"
+        style="@style/tituloTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="169dp"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="170dp"
-        android:text="Registrarse"
+        android:layout_marginTop="108dp"
+        android:text="¡Únete ahora!"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/txtNombreUsuarioRegistrar"
-        android:layout_width="217dp"
-        android:layout_height="48dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView10"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5">
+
+        <EditText
+            android:id="@+id/txtNombreUsuarioRegistrar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Nombres"
+            android:inputType="text"
+            android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView11"
+        android:layout_width="180dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView10">
+
+        <EditText
+            android:id="@+id/txtLugarRegistrarUsuario"
+            android:layout_width="170dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Barrio"
+            android:inputType="text"
+            android:textAlignment="center" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView12"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView11">
+
+        <EditText
+            android:id="@+id/txtEmailRegistrarUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Ingresa email"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView13"
+        android:layout_width="368dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView12">
+
+        <EditText
+            android:id="@+id/txtContraRegistrarUsuario"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Contraseña"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView13">
+
+        <ImageView
+            android:id="@+id/imgRegistrarUsuario"
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            tools:srcCompat="@tools:sample/avatars" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:ems="10"
-        android:hint="Nombres"
-        android:inputType="text"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView14">
 
-    <EditText
-        android:id="@+id/txtLugarRegistrarUsuario"
-        android:layout_width="217dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="28dp"
-        android:ems="10"
-        android:hint="Barrio"
-        android:inputType="text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.515"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtNombreUsuarioRegistrar" />
+        <ImageButton
+            android:id="@+id/btnRegistrarUsuario"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/back"
+            app:srcCompat="@drawable/baseline_person_add_alt_1_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
 
-    <EditText
-        android:id="@+id/txtEmailRegistrarUsuario"
-        android:layout_width="wrap_content"
+    <androidx.cardview.widget.CardView
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="7dp"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="Ingresa email"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtLugarRegistrarUsuario" />
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView11"
+        app:layout_constraintTop_toBottomOf="@+id/cardView10">
 
-    <EditText
-        android:id="@+id/txtDNIRegistrarUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="Ingrese DNI "
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtEmailRegistrarUsuario" />
-
-    <EditText
-        android:id="@+id/txtContraRegistrarUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="101dp"
-        android:ems="10"
-        android:hint="Contraseña"
-        android:inputType="text"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtDNIRegistrarUsuario" />
-
-    <Button
-        android:id="@+id/btnRegistrarUsuario"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="145dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="145dp"
-        android:text="Registrarse"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgRegistrarUsuario" />
-
-    <ImageView
-        android:id="@+id/imgRegistrarUsuario"
-        android:layout_width="110dp"
-        android:layout_height="110dp"
-        android:layout_marginStart="141dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="142dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txtContraRegistrarUsuario"
-        tools:srcCompat="@tools:sample/avatars" />
+        <EditText
+            android:id="@+id/txtDNIRegistrarUsuario"
+            android:layout_width="170dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:ems="10"
+            android:fontFamily="sans-serif-light"
+            android:hint="Ingrese DNI "
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

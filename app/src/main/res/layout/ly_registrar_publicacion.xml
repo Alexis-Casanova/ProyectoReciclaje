@@ -4,71 +4,104 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backwhite"
     tools:context=".RegistrarPublicacion">
 
     <TextView
         android:id="@+id/tv_title"
+        style="@style/tituloTodo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Postear"
-        android:textSize="24sp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="68dp"
+        android:fontFamily="sans-serif-medium"
+        android:text="¡Comparte tu idea!"
+        android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        android:fontFamily="sans-serif-medium" />
-
-    <Spinner
-        android:id="@+id/sp_tipo_post"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="28dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_title" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <Spinner
-        android:id="@+id/sp_lugar_post"
-        android:layout_width="0dp"
-        android:layout_height="48dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="36dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView7"
+        android:layout_width="362dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="40dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_tipo_post" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_title">
 
-    <EditText
-        android:id="@+id/et_descripcion_post"
-        android:layout_width="0dp"
-        android:layout_height="150dp"
-        android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="48dp"
-        android:gravity="top|start"
-        android:hint="¿Qué estás pensando?"
-        android:padding="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/sp_lugar_post" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_postear"
+            <Spinner
+                android:id="@+id/sp_tipo_post"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp" />
+
+            <Spinner
+                android:id="@+id/sp_lugar_post"
+                android:layout_width="250dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginTop="10dp" />
+
+            <EditText
+                android:id="@+id/et_descripcion_post"
+                android:layout_width="355dp"
+                android:layout_height="133dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="10dp"
+                android:background="#F8F9F9"
+                android:gravity="top|start"
+                android:hint="¿Qué estás pensando?"
+                android:padding="16dp" />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Publicar"
+        android:layout_marginTop="25dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/img_post" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView7">
 
-    <ImageView
-        android:id="@+id/img_post"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginTop="32dp"
+        <ImageView
+            android:id="@+id/img_post"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:background="@drawable/post"
+            tools:srcCompat="@drawable/post" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginBottom="16dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_descripcion_post"
-        tools:srcCompat="@drawable/post" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView8">
+
+        <ImageButton
+            android:id="@+id/btn_postear"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/baseline_publish_24"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
