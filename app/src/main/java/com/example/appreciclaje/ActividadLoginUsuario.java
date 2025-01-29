@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -25,7 +26,7 @@ import retrofit2.Response;
 
 public class ActividadLoginUsuario extends AppCompatActivity {
     EditText txt_emailUser, txt_passwordUser;
-    Button btn_ingresarUser;
+    ImageButton btn_ingresarUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
