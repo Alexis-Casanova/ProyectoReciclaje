@@ -55,18 +55,6 @@ public class AdapterEvento extends BaseAdapter {
         titulo.setText(evento.getTitulo());
         fecha.setText(evento.getFecha());
         lugar.setText(evento.getLugar());
-
-
-        vista.setOnClickListener(v->{
-            Intent oIntento = new Intent(context, ActividadDetalleEvento.class);
-            oIntento.putExtra("titulo", evento.getTitulo());
-            oIntento.putExtra("descripcion", evento.getDescripcion());
-            oIntento.putExtra("fecha", evento.getFecha());
-            oIntento.putExtra("lugar", evento.getLugar());
-            oIntento.putExtra("organizador", evento.getOrganizador());
-            context.startActivity(oIntento);
-        });
-
         return vista;
     }
 }

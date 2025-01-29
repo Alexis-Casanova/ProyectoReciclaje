@@ -17,10 +17,13 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".RegistrarPunto"
+            android:name=".EliminarEvento"
             android:exported="false" />
         <activity
-            android:name=".ActividadPunto"
+            android:name=".EditarEvento"
+            android:exported="false" />
+        <activity
+            android:name=".ActividadCalendarioAdmin"
             android:exported="false" />
         <activity
             android:name=".RegistrarEvento"

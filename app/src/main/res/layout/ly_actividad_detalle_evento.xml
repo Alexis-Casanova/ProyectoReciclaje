@@ -32,6 +32,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="14dp"
@@ -67,11 +68,11 @@
 
             <TextView
                 android:id="@+id/lb_descripEvento"
-                android:layout_width="match_parent"
                 style="@style/evento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
@@ -86,45 +87,67 @@
                 android:id="@+id/lb_horarioEventoDet"
                 style="@style/evento"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
                 android:text="Lugar:" />
 
             <TextView
                 android:id="@+id/lb_lugarEventoDet"
                 style="@style/evento"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="5dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
                 android:text="Organizador:" />
 
             <TextView
                 android:id="@+id/lb_organizadorEvento"
+                style="@style/evento"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
-                android:layout_height="wrap_content"
-                style="@style/evento"
                 android:text="TextView" />
         </LinearLayout>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_editarEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Editar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.235"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+
+    <Button
+        android:id="@+id/btn_eliminarEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="Eliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.522"
+        app:layout_constraintStart_toEndOf="@+id/btn_editarEvento"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -23,11 +23,7 @@ public class Evento {
 
     @Override
     public String toString() {
-        return "Evento: " + titulo + '\'' +
-                descripcion + '\'' +
-                ", lugar: '" + lugar + '\'' +
-                ", fecha: '" + fecha + '\'' +
-                ", organizado por : '" + organizador;
+        return titulo+": " + descripcion + ". Organizado por: "+ organizador;
     }
 
     public int getId() {

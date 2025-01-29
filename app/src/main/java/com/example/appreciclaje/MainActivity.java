@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             startActivity(oIntento);
         });
         btn_calendar.setOnClickListener(v ->{
-            Intent oIntento = new Intent(MainActivity.this, ActividadCalendario.class);
+            Intent oIntento = new Intent(MainActivity.this, ActividadCalendarioAdmin.class);
             startActivity(oIntento);
         });
         btn_agregarEvento.setOnClickListener(v ->{

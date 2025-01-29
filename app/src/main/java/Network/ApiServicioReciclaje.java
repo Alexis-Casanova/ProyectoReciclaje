@@ -22,31 +22,27 @@ import retrofit2.http.Path;
 
 public interface ApiServicioReciclaje {
 
-    // Recupero una lista de Publicaciones
+    // Publicaciones
     @GET("Publicaciones")
     Call<List<Publicacion>> GetPublicaciones();
 
     @POST("Publicaciones")
     Call<Publicacion> PostPublicaciones(@Body Publicacion publicacion);
 
-    //Recupero una lista de Ubicaciones
+    // Puntos
     @GET("Puntos")
     Call<List<Punto>> getPuntos();
-    //Envio una Ubicacion:
+
     @POST("Puntos")
     Call<Punto> PostPuntos(@Body Punto punto);
-    // Editar una Ubicacion
+
     @PUT("Puntos/{id}")
     Call<Punto> PutPuntos(@Path("id") int id, @Body Punto punto);
 
-    // Eliminar una Ubicacion
     @DELETE("Puntos/{id}")
     Call<Void> DeletePuntos(@Path("id") int id);
 
-    // Falta el PU y DELETE para Publicaciones
-
-    // ACA LOS DEMAS PARA LAS DOS TABLAS QUE FALTAN
-
+    // Usuarios
     @GET("Usuarios")
     Call<List<Usuario>> getUsuarios();
 
@@ -57,13 +53,13 @@ public interface ApiServicioReciclaje {
     @POST("Usuarios/UploadImage")
     Call<RespuestaObtenida> respuestaImagen(@Part MultipartBody.Part file);
 
-    // Actualizar un usuario existente
     @PUT("Usuarios/{id}")
     Call<Usuario> actualizarUsuario(@Path("id") int idUsuario, @Body Usuario usuario);
 
     @GET("Usuarios/{id}")
     Call<Usuario> obtenerUsuarioPorId(@Path("id") int idUsuario);
 
+    //Eventos
     @GET("Eventos")
     Call<List<Evento>> getEventos();
 
@@ -73,6 +69,6 @@ public interface ApiServicioReciclaje {
     @PUT("Eventos/{id}")
     Call<Evento> PutEventos(@Path("id") int idEvento, @Body Evento evento);
 
-    @retrofit2.http.DELETE("Eventos/{id}")
+    @DELETE("Eventos/{id}")
     Call<Void> DeleteEventos(@Path("id") int idEvento);
 }
