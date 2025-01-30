@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ffffff"
+    android:background="@drawable/backwhite"
     tools:context=".ActividadDetalleEvento">
 
     <TextView
@@ -13,7 +13,7 @@
         style="@style/Titulo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="116dp"
         android:text="Recolección"
         app:layout_constraintStart_toEndOf="@+id/textView6"
         app:layout_constraintTop_toTopOf="parent" />
@@ -22,19 +22,20 @@
         android:id="@+id/textView6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="108dp"
+        android:layout_marginTop="116dp"
         android:fontFamily="sans-serif-condensed-light"
         android:text="Detalle"
         android:textSize="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.391"
+        app:layout_constraintHorizontal_bias="0.388"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView18"
         android:layout_width="378dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="55dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.484"
@@ -75,8 +76,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:cardCornerRadius="30dp">
 
                 <TextView
                     android:id="@+id/lb_descripEvento"
@@ -101,8 +102,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:cardCornerRadius="30dp">
 
                 <TextView
                     android:id="@+id/lb_horarioEventoDet"
@@ -125,8 +126,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:cardCornerRadius="30dp">
 
                 <TextView
                     android:id="@+id/lb_lugarEventoDet"
@@ -151,8 +152,8 @@
 
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                app:cardCornerRadius="30dp">
 
                 <TextView
                     android:id="@+id/lb_organizadorEvento"
@@ -167,23 +168,38 @@
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
-    <Button
-        android:id="@+id/btn_editarEvento"
+    <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Editar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.278"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="484dp" />
+        android:layout_marginStart="87dp"
+        android:layout_marginTop="64dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintStart_toEndOf="@+id/cardView19"
+        app:layout_constraintTop_toBottomOf="@+id/cardView18">
 
-    <Button
-        android:id="@+id/btn_eliminarEvento"
+        <ImageButton
+            android:id="@+id/btn_eliminarEvento"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/baseline_delete_24" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Eliminar"
+        android:layout_marginTop="64dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.593"
-        app:layout_constraintStart_toEndOf="@+id/btn_editarEvento"
-        tools:layout_editor_absoluteY="484dp" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView18">
+
+        <ImageButton
+            android:id="@+id/btn_editarEvento"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/baseline_edit_24" />
+    </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,7 @@ import retrofit2.Response;
 
 public class ActividadDetalleEvento extends AppCompatActivity {
     TextView lb_tituloEventoDet, lb_descripEvento, lb_horarioEventoDet, lb_lugarEventoDet, lb_organizadorEvento;
-    Button btn_editarEvento, btn_eliminarEvento;
+    ImageButton btn_editarEvento, btn_eliminarEvento;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
