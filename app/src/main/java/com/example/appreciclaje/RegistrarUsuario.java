@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -119,24 +120,41 @@ public class RegistrarUsuario extends AppCompatActivity {
         String dni = txtDNIRegistro.getText().toString();
         String contrasena = txtContraRegistro.getText().toString();
 
+        if (nombre.isEmpty() || lugar.isEmpty() || email.isEmpty() || dni.isEmpty() || contrasena.isEmpty()) {
+            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Usuario usuario = new Usuario(0, nombre, email, dni, lugar, contrasena, "usuario", 0, rutaImagenSubida);
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        Call<Usuario> call = apiServicio.PostUsuarios(usuario);
-        call.enqueue(new Callback<Usuario>() {
-            @Override
-            public void onResponse(Call<Usuario> call, Response<Usuario> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegistrarUsuario.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistrarUsuario.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
-                }
-            }
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar registro")
+                .setMessage("¿Estás seguro de que deseas registrar este usuario?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    Call<Usuario> call = apiServicio.PostUsuarios(usuario);
+                    call.enqueue(new Callback<Usuario>() {
+                        @Override
+                        public void onResponse(Call<Usuario> call, Response<Usuario> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(RegistrarUsuario.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(RegistrarUsuario.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Usuario> call, Throwable t) {
-                Toast.makeText(RegistrarUsuario.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Usuario> call, Throwable t) {
+                            Toast.makeText(RegistrarUsuario.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 }

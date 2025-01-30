@@ -9,6 +9,7 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
@@ -77,25 +78,37 @@ public class EditarPunto extends AppCompatActivity {
             return;
         }
 
-        Punto puntoActualizado = new Punto(idPunto, nombre, direccion, referencia);
+        androidx.appcompat.app.AlertDialog dialog = new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Confirmar actualización")
+                .setMessage("¿Estás seguro de que deseas actualizar este punto?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    Punto puntoActualizado = new Punto(idPunto, nombre, direccion, referencia);
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        apiServicio.PutPuntos(idPunto, puntoActualizado).enqueue(new Callback<Punto>() {
-            @Override
-            public void onResponse(Call<Punto> call, Response<Punto> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(EditarPunto.this, "Punto actualizado correctamente.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(EditarPunto.this, ActividadPunto.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(EditarPunto.this, "Error al actualizar el punto.", Toast.LENGTH_SHORT).show();
-                }
-            }
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    apiServicio.PutPuntos(idPunto, puntoActualizado).enqueue(new Callback<Punto>() {
+                        @Override
+                        public void onResponse(Call<Punto> call, Response<Punto> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(EditarPunto.this, "Punto actualizado correctamente.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(EditarPunto.this, ActividadPunto.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(EditarPunto.this, "Error al actualizar el punto.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Punto> call, Throwable t) {
-                Toast.makeText(EditarPunto.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Punto> call, Throwable t) {
+                            Toast.makeText(EditarPunto.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 }

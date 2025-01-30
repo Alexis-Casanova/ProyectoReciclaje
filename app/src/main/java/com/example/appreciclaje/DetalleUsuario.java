@@ -63,10 +63,10 @@ public class DetalleUsuario extends AppCompatActivity {
     }
 
     private void eliminarUsuario(int id) {
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Está seguro de que desea eliminar este usuario?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
                     ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
                     apiServicio.DeleteUsuarios(id).enqueue(new Callback<Void>() {
                         @Override
@@ -87,8 +87,13 @@ public class DetalleUsuario extends AppCompatActivity {
                         }
                     });
                 })
-                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
-                .show();
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     @Override

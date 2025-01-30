@@ -51,10 +51,10 @@ public class ActividadDetallePunto extends AppCompatActivity {
     }
 
     private void eliminarPunto(int id) {
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Estás seguro de que deseas eliminar este punto?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
                     ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
                     apiServicio.DeletePuntos(id).enqueue(new Callback<Void>() {
                         @Override
@@ -75,7 +75,12 @@ public class ActividadDetallePunto extends AppCompatActivity {
                         }
                     });
                 })
-                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
-                .show();
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 }

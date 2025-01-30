@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -118,34 +119,46 @@ public class EditarUsuario extends AppCompatActivity {
                 usuarioLogeado.getRol(), usuarioLogeado.getRecompensa(), usuarioLogeado.getRutaUsuario(), usuarioLogeado.getContrasena()
         );
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar actualización")
+                .setMessage("¿Estás seguro de que deseas actualizar este usuario?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
 
-        if (rutaImagenSeleccionada != null) {
-            File archivoImagen = new File(rutaImagenSeleccionada);
-            MultipartBody.Part multipartBody = MultipartBody.Part.createFormData(
-                    "file", archivoImagen.getName(), RequestBody.create(MediaType.parse("image/*"), archivoImagen)
-            );
+                    if (rutaImagenSeleccionada != null) {
+                        File archivoImagen = new File(rutaImagenSeleccionada);
+                        MultipartBody.Part multipartBody = MultipartBody.Part.createFormData(
+                                "file", archivoImagen.getName(), RequestBody.create(MediaType.parse("image/*"), archivoImagen)
+                        );
 
-            Call<RespuestaObtenida> callImagen = apiServicio.respuestaImagen(multipartBody);
-            callImagen.enqueue(new Callback<RespuestaObtenida>() {
-                @Override
-                public void onResponse(Call<RespuestaObtenida> call, Response<RespuestaObtenida> response) {
-                    if (response.isSuccessful() && response.body() != null) {
-                        usuarioActualizado.setRutaUsuario(response.body().getUrl());
-                        actualizarUsuarioEnServidor(apiServicio, usuarioActualizado);
+                        Call<RespuestaObtenida> callImagen = apiServicio.respuestaImagen(multipartBody);
+                        callImagen.enqueue(new Callback<RespuestaObtenida>() {
+                            @Override
+                            public void onResponse(Call<RespuestaObtenida> call, Response<RespuestaObtenida> response) {
+                                if (response.isSuccessful() && response.body() != null) {
+                                    usuarioActualizado.setRutaUsuario(response.body().getUrl());
+                                    actualizarUsuarioEnServidor(apiServicio, usuarioActualizado);
+                                } else {
+                                    Toast.makeText(EditarUsuario.this, "Error al subir la imagen.", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Call<RespuestaObtenida> call, Throwable t) {
+                                Toast.makeText(EditarUsuario.this, "Error al subir la imagen: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        });
                     } else {
-                        Toast.makeText(EditarUsuario.this, "Error al subir la imagen.", Toast.LENGTH_SHORT).show();
+                        actualizarUsuarioEnServidor(apiServicio, usuarioActualizado);
                     }
-                }
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
 
-                @Override
-                public void onFailure(Call<RespuestaObtenida> call, Throwable t) {
-                    Toast.makeText(EditarUsuario.this, "Error al subir la imagen: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-                }
-            });
-        } else {
-            actualizarUsuarioEnServidor(apiServicio, usuarioActualizado);
-        }
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     private void actualizarUsuarioEnServidor(ApiServicioReciclaje apiServicio, Usuario usuario) {

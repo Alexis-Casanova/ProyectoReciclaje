@@ -6,6 +6,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import Models.Punto;
@@ -42,24 +43,36 @@ public class RegistrarPunto extends AppCompatActivity {
             return;
         }
 
-        Punto punto = new Punto(0, nombre, direccion, referencia);
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar registro")
+                .setMessage("¿Estás seguro de que deseas registrar este punto?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    Punto punto = new Punto(0, nombre, direccion, referencia);
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        Call<Punto> call = apiServicio.PostPuntos(punto);
-        call.enqueue(new Callback<Punto>() {
-            @Override
-            public void onResponse(Call<Punto> call, Response<Punto> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegistrarPunto.this, "Ubicación registrada correctamente", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistrarPunto.this, "Error al registrar la ubicación", Toast.LENGTH_SHORT).show();
-                }
-            }
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    Call<Punto> call = apiServicio.PostPuntos(punto);
+                    call.enqueue(new Callback<Punto>() {
+                        @Override
+                        public void onResponse(Call<Punto> call, Response<Punto> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(RegistrarPunto.this, "Ubicación registrada correctamente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(RegistrarPunto.this, "Error al registrar la ubicación", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Punto> call, Throwable t) {
-                Toast.makeText(RegistrarPunto.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Punto> call, Throwable t) {
+                            Toast.makeText(RegistrarPunto.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 }
