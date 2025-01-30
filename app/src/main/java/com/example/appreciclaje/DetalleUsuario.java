@@ -8,6 +8,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.bumptech.glide.Glide;
@@ -23,7 +24,7 @@ import retrofit2.Response;
 public class DetalleUsuario extends AppCompatActivity {
     TextView txtNombre, txtBarrio, txtEmail, txtDNI, txtRecompensas;
     ImageView imgUsuario;
-    ImageButton btn_canjearUsuario, btn_editarUsuario;
+    ImageButton btn_canjearUsuario, btn_editarUsuario, btn_eliminarUsuario;
     private Usuario usuarioLogeado;
 
     @Override
@@ -39,6 +40,7 @@ public class DetalleUsuario extends AppCompatActivity {
         imgUsuario = findViewById(R.id.imgDetalleUsuario);
         btn_canjearUsuario = findViewById(R.id.btn_CanjearUsuario);
         btn_editarUsuario = findViewById(R.id.btn_EditarUsuarioDetalle);
+        btn_eliminarUsuario = findViewById(R.id.btn_eliminarUsuario);
 
         btn_editarUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(DetalleUsuario.this, EditarUsuario.class);
@@ -50,6 +52,43 @@ public class DetalleUsuario extends AppCompatActivity {
         });
 
         obtenerUsuarioDesdeServidor();
+
+        btn_eliminarUsuario.setOnClickListener(v -> {
+            if (usuarioLogeado != null) {
+                eliminarUsuario(usuarioLogeado.getIdUsuario());
+            } else {
+                Toast.makeText(this, "No se encontró el usuario.", Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void eliminarUsuario(int id) {
+        new AlertDialog.Builder(this)
+                .setTitle("Confirmar eliminación")
+                .setMessage("¿Está seguro de que desea eliminar este usuario?")
+                .setPositiveButton("Sí", (dialog, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    apiServicio.DeleteUsuarios(id).enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(DetalleUsuario.this, "Usuario eliminado correctamente.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(DetalleUsuario.this, MainActivity.class); // Cambia a la actividad que corresponda
+                                startActivity(intent);
+                                finish();
+                            } else {
+                                Toast.makeText(DetalleUsuario.this, "Error al eliminar el usuario.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+
+                        @Override
+                        public void onFailure(Call<Void> call, Throwable t) {
+                            Toast.makeText(DetalleUsuario.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
+                .show();
     }
 
     @Override

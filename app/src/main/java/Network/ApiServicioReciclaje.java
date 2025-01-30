@@ -59,6 +59,9 @@ public interface ApiServicioReciclaje {
     @GET("Usuarios/{id}")
     Call<Usuario> obtenerUsuarioPorId(@Path("id") int idUsuario);
 
+    @DELETE("Usuarios/{id}")
+    Call<Void> DeleteUsuarios(@Path("id") int id);
+
     //Eventos
     @GET("Eventos")
     Call<List<Evento>> getEventos();
