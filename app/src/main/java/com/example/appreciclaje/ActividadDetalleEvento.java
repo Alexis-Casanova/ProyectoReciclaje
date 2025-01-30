@@ -52,10 +52,10 @@ public class ActividadDetalleEvento extends AppCompatActivity {
     }
 
     private void eliminarEvento(int id) {
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirmar eliminación")
                 .setMessage("¿Estás seguro de que deseas eliminar este evento?")
-                .setPositiveButton("Sí", (dialog, which) -> {
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
                     ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
                     apiServicio.DeleteEventos(id).enqueue(new Callback<Void>() {
                         @Override
@@ -70,15 +70,19 @@ public class ActividadDetalleEvento extends AppCompatActivity {
                             }
                         }
 
-
                         @Override
                         public void onFailure(Call<Void> call, Throwable t) {
                             Toast.makeText(ActividadDetalleEvento.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
                         }
                     });
                 })
-                .setNegativeButton("Cancelar", (dialog, which) -> dialog.dismiss())
-                .show();
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
 }

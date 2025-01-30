@@ -1,6 +1,7 @@
 package com.example.appreciclaje;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -61,25 +62,37 @@ public class RegistrarEvento extends AppCompatActivity {
 
         Evento nuevoEvento = new Evento(0, titulo, contenido, lugar, fecha, organizador);
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        apiServicio.PostEventos(nuevoEvento).enqueue(new Callback<Evento>() {
-            @Override
-            public void onResponse(Call<Evento> call, Response<Evento> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegistrarEvento.this, "Evento registrado exitosamente.", Toast.LENGTH_SHORT).show();
-                    limpiarFormulario();
-                    Intent oIntento = new Intent(RegistrarEvento.this, ActividadCalendario.class);
-                    startActivity(oIntento);
-                } else {
-                    Toast.makeText(RegistrarEvento.this, "Error al registrar el evento.", Toast.LENGTH_SHORT).show();
-                }
-            }
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar registro")
+                .setMessage("¿Estás seguro de que deseas registrar este evento?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    apiServicio.PostEventos(nuevoEvento).enqueue(new Callback<Evento>() {
+                        @Override
+                        public void onResponse(Call<Evento> call, Response<Evento> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(RegistrarEvento.this, "Evento registrado exitosamente.", Toast.LENGTH_SHORT).show();
+                                limpiarFormulario();
+                                Intent oIntento = new Intent(RegistrarEvento.this, ActividadCalendario.class);
+                                startActivity(oIntento);
+                            } else {
+                                Toast.makeText(RegistrarEvento.this, "Error al registrar el evento.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Evento> call, Throwable t) {
-                Toast.makeText(RegistrarEvento.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Evento> call, Throwable t) {
+                            Toast.makeText(RegistrarEvento.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     private void limpiarFormulario() {

@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
@@ -87,24 +88,36 @@ public class EditarEvento extends AppCompatActivity {
 
         Evento eventoActualizado = new Evento(idEvento, titulo, contenido, lugar, fecha, organizador);
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        apiServicio.PutEventos(idEvento, eventoActualizado).enqueue(new Callback<Evento>() {
-            @Override
-            public void onResponse(Call<Evento> call, Response<Evento> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(EditarEvento.this, "Evento actualizado correctamente.", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(EditarEvento.this, ActividadCalendario.class);
-                    startActivity(intent);
-                } else {
-                    Toast.makeText(EditarEvento.this, "Error al actualizar el evento.", Toast.LENGTH_SHORT).show();
-                }
-            }
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar actualización")
+                .setMessage("¿Estás seguro de que deseas actualizar este evento?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    apiServicio.PutEventos(idEvento, eventoActualizado).enqueue(new Callback<Evento>() {
+                        @Override
+                        public void onResponse(Call<Evento> call, Response<Evento> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(EditarEvento.this, "Evento actualizado correctamente.", Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(EditarEvento.this, ActividadCalendario.class);
+                                startActivity(intent);
+                            } else {
+                                Toast.makeText(EditarEvento.this, "Error al actualizar el evento.", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Evento> call, Throwable t) {
-                Toast.makeText(EditarEvento.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Evento> call, Throwable t) {
+                            Toast.makeText(EditarEvento.this, "Error de conexión: " + t.getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     private void configurarSpinners() {

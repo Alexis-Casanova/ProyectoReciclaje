@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.database.Cursor;
 import android.net.Uri;
@@ -159,22 +160,34 @@ public class RegistrarPublicacion extends AppCompatActivity {
                 null
         );
 
-        ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-        Call<Publicacion> call = apiServicio.PostPublicaciones(publicacion);
-        call.enqueue(new Callback<Publicacion>() {
-            @Override
-            public void onResponse(Call<Publicacion> call, Response<Publicacion> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(RegistrarPublicacion.this, "Publicación realizada correctamente", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(RegistrarPublicacion.this, "Error al publicar", Toast.LENGTH_SHORT).show();
-                }
-            }
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Confirmar publicación")
+                .setMessage("¿Estás seguro de que deseas publicar esta publicación?")
+                .setPositiveButton("Sí", (dialogInterface, which) -> {
+                    ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
+                    Call<Publicacion> call = apiServicio.PostPublicaciones(publicacion);
+                    call.enqueue(new Callback<Publicacion>() {
+                        @Override
+                        public void onResponse(Call<Publicacion> call, Response<Publicacion> response) {
+                            if (response.isSuccessful()) {
+                                Toast.makeText(RegistrarPublicacion.this, "Publicación realizada correctamente", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(RegistrarPublicacion.this, "Error al publicar", Toast.LENGTH_SHORT).show();
+                            }
+                        }
 
-            @Override
-            public void onFailure(Call<Publicacion> call, Throwable t) {
-                Toast.makeText(RegistrarPublicacion.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
-            }
-        });
+                        @Override
+                        public void onFailure(Call<Publicacion> call, Throwable t) {
+                            Toast.makeText(RegistrarPublicacion.this, "Error: " + t.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                })
+                .setNegativeButton("Cancelar", (dialogInterface, which) -> dialogInterface.dismiss())
+                .create();
+
+        dialog.show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 }
