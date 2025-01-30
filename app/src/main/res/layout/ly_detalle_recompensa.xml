@@ -98,7 +98,7 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView39"
         android:layout_width="347dp"
-        android:layout_height="263dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="26dp"
         app:cardCornerRadius="16dp"
         app:cardElevation="4dp"
@@ -166,7 +166,7 @@
                 android:layout_height="100dp"
                 android:layout_gravity="center"
                 android:layout_marginTop="12dp"
-                android:scaleType="centerCrop"
+                android:scaleType="fitXY"
                 android:src="@drawable/baseline_comment_24" />
 
             <LinearLayout
