@@ -1,92 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#ffffff">
+    android:background="#E0E0E0"
+    android:padding="24dp">
 
     <androidx.cardview.widget.CardView
-        android:layout_width="378dp"
-        android:layout_height="172dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:cardCornerRadius="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
+        app:cardBackgroundColor="#FFFFFF"
         app:layout_constraintTop_toTopOf="parent">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="30dp">
-
-            <TextView
-                android:id="@+id/lb_tituloEvento"
-                style="@style/tituloTodo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#f8f9f9"
-                android:text="TextView"
-                android:textAlignment="center" />
-        </androidx.cardview.widget.CardView>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <TextView
+                android:id="@+id/lb_tituloEvento"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Título del Evento"
+                android:textSize="20sp"
+                android:textStyle="bold"
+                android:textColor="#212121"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginBottom="16dp" />
 
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
                 android:text="Fecha:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:gravity="center" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_horarioEvento"
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/lb_horarioEvento"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="TextView" />
-            </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:text="Horario"
+                android:textSize="16sp"
+                android:textColor="#424242"
+                android:gravity="center"
+                android:padding="8dp"
+                android:layout_marginBottom="12dp" />
 
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
                 android:text="Lugar:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textSize="14sp"
+                android:textColor="#757575"
+                android:gravity="center" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_lugarEvento"
                 android:layout_width="match_parent"
-                app:cardCornerRadius="30dp"
-                android:layout_height="match_parent">
-
-                <TextView
-                    android:id="@+id/lb_lugarEvento"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="TextView"
-                    android:textSize="14sp" />
-            </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:text="Lugar"
+                android:textSize="16sp"
+                android:textColor="#424242"
+                android:gravity="center"
+                android:padding="8dp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>

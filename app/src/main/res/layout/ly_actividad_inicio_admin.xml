@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backwhite"
+    android:background="@drawable/backadmi"
     tools:context=".ActividadInicioAdmin">
 
     <TextView
@@ -61,7 +61,8 @@
                 android:layout_width="56dp"
                 android:layout_height="56dp"
                 android:background="#ffffff"
-                app:srcCompat="@drawable/baseline_add_location_24" />
+                app:srcCompat="@drawable/baseline_add_location_24"
+                tools:ignore="SpeakableTextPresentCheck" />
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView

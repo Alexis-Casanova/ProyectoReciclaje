@@ -3,8 +3,8 @@ package com.example.appreciclaje;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
@@ -22,7 +22,7 @@ import retrofit2.Response;
 public class EditarEvento extends AppCompatActivity {
     EditText et_TituloEventoEdit, et_ContenidoEdit, et_fechaEdit, et_tipoEdit;
     Spinner sp_LugarEdit;
-    Button btn_editarEventoEdit;
+    ImageButton btn_editarEventoEdit;
     int idEvento;
 
     @Override
@@ -35,7 +35,7 @@ public class EditarEvento extends AppCompatActivity {
         et_fechaEdit = findViewById(R.id.et_fechaEdit);
         et_tipoEdit = findViewById(R.id.et_tipoEdit);
         sp_LugarEdit = findViewById(R.id.sp_LugarEdit);
-        btn_editarEventoEdit = findViewById(R.id.btn_editarEventoEdit);
+        btn_editarEventoEdit = findViewById(R.id.btn_editarPuntoEdit);
 
         configurarSpinners();
 

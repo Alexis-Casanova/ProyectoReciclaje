@@ -1,9 +1,7 @@
 package com.example.appreciclaje;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,7 +28,7 @@ public class ActividadDetalleEvento extends AppCompatActivity {
         lb_horarioEventoDet = findViewById(R.id.lb_horarioEventoDet);
         lb_lugarEventoDet = findViewById(R.id.lb_lugarEventoDet);
         lb_organizadorEvento = findViewById(R.id.lb_organizadorEvento);
-        btn_editarEvento = findViewById(R.id.btn_editarEvento);
+        btn_editarEvento = findViewById(R.id.btnCrearUbicacion);
         btn_eliminarEvento = findViewById(R.id.btn_eliminarEvento);
 
         Bundle extras = getIntent().getExtras();

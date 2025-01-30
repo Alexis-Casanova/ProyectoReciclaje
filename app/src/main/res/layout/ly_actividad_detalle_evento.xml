@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backwhite"
+    android:background="@drawable/backuser"
     tools:context=".ActividadDetalleEvento">
 
     <TextView
@@ -33,146 +33,125 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView18"
-        android:layout_width="378dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="55dp"
-        app:cardCornerRadius="30dp"
+        android:layout_width="355dp"
+        android:layout_height="361dp"
+        android:layout_marginTop="176dp"
+        app:cardBackgroundColor="#FFFFFF"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="6dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.484"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView7">
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:cardCornerRadius="30dp">
-
-            <TextView
-                android:id="@+id/lb_tituloEventoDet"
-                style="@style/tituloTodo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#f8f9f9"
-                android:text="TextView"
-                android:textAlignment="center" />
-        </androidx.cardview.widget.CardView>
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:padding="20dp">
 
+            <!-- Título del Evento -->
+            <TextView
+                android:id="@+id/lb_tituloEventoDet"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Título del Evento"
+                android:textColor="#212121"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- Descripción del Evento -->
             <TextView
                 android:id="@+id/textView11"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:text="Descripción:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textColor="#757575"
+                android:textSize="14sp" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_descripEvento"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="30dp">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Descripción del evento"
+                android:textColor="#424242"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/lb_descripEvento"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="TextView"
-                    android:textSize="14sp" />
-            </androidx.cardview.widget.CardView>
-
+            <!-- Fecha del Evento -->
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:text="Fecha:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textColor="#757575"
+                android:textSize="14sp" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_horarioEventoDet"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="30dp">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Horario"
+                android:textColor="#424242"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/lb_horarioEventoDet"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:text="TextView" />
-            </androidx.cardview.widget.CardView>
-
+            <!-- Lugar del Evento -->
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:text="Lugar:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textColor="#757575"
+                android:textSize="14sp" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_lugarEventoDet"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="30dp">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Lugar"
+                android:textColor="#424242"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/lb_lugarEventoDet"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="TextView"
-                    android:textSize="14sp" />
-            </androidx.cardview.widget.CardView>
-
+            <!-- Organizador del Evento -->
             <TextView
                 android:id="@+id/textView12"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:fontFamily="sans-serif-light"
+                android:gravity="center"
                 android:text="Organizador:"
-                android:textAlignment="center"
-                android:textColor="#9b9b9b" />
+                android:textColor="#757575"
+                android:textSize="14sp" />
 
-            <androidx.cardview.widget.CardView
+            <TextView
+                android:id="@+id/lb_organizadorEvento"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardCornerRadius="30dp">
-
-                <TextView
-                    android:id="@+id/lb_organizadorEvento"
-                    style="@style/evento"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginBottom="10dp"
-                    android:text="TextView"
-                    android:textSize="14sp" />
-            </androidx.cardview.widget.CardView>
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:padding="8dp"
+                android:text="Organizador"
+                android:textColor="#424242"
+                android:textSize="16sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="87dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="33dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintStart_toEndOf="@+id/cardView19"
         app:layout_constraintTop_toBottomOf="@+id/cardView18">
@@ -190,14 +169,15 @@
         android:id="@+id/cardView19"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="33dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView18">
 
         <ImageButton
-            android:id="@+id/btn_editarEvento"
+            android:id="@+id/btnCrearUbicacion"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@color/white"

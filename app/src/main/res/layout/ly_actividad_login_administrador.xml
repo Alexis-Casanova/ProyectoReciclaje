@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/back"
+    android:background="@drawable/backadmi"
     tools:context=".ActividadLoginAdministrador">
 
     <TextView
@@ -16,7 +16,7 @@
         android:layout_marginTop="168dp"
         android:layout_marginEnd="152dp"
         android:text="Sesion"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -28,7 +28,7 @@
         android:fontFamily="sans-serif-condensed-light"
         android:text="Iniciar"
         android:textSize="20dp"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         app:layout_constraintEnd_toStartOf="@+id/textView"
         app:layout_constraintTop_toTopOf="parent" />
 
