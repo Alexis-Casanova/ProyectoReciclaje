@@ -48,6 +48,8 @@ public class DetalleUsuario extends AppCompatActivity {
         });
 
         btn_canjearUsuario.setOnClickListener(v -> {
+            Intent oInento = new Intent(DetalleUsuario.this, ActividadCanjearRecompensas.class);
+            startActivity(oInento);
             Toast.makeText(this, "Recompensas canjeadas: " + usuarioLogeado.getRecompensa() + " puntos", Toast.LENGTH_SHORT).show();
         });
 
