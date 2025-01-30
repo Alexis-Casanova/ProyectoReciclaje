@@ -74,7 +74,7 @@ public class RegistrarPublicacion extends AppCompatActivity {
         adapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spTipoPost.setAdapter(adapterTipo);
 
-        String[] lugares = {"San Sebastian", "San Mateo", "San Pedro"};
+        String[] lugares = {"San Pedro", "San Sebastían", "El Cumbe", "San Martín"};
         ArrayAdapter<String> adapterLugar = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, lugares);
         adapterLugar.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spLugarPost.setAdapter(adapterLugar);

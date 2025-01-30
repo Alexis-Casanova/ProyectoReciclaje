@@ -39,13 +39,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Spinner
-        android:id="@+id/sp_barrio"
-        android:layout_width="336dp"
-        android:layout_height="48dp"
+        android:id="@+id/sp_barrioMain"
+        android:layout_width="285dp"
+        android:layout_height="53dp"
         android:layout_marginTop="156dp"
         android:backgroundTint="#1F7C23"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintHorizontal_bias="0.269"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tb_main" />
 
@@ -58,7 +58,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/sp_barrio"
+        app:layout_constraintTop_toBottomOf="@+id/sp_barrioMain"
         app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
@@ -84,6 +84,7 @@
         tools:ignore="SpeakableTextPresentCheck" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="wrap_content"
         android:layout_height="48dp"
         android:layout_marginTop="28dp"
@@ -138,13 +139,35 @@
 
     <ImageButton
         android:id="@+id/btn_agregarEvento"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_width="51dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="44dp"
         app:layout_constraintEnd_toStartOf="@+id/btn_ubi"
-        app:layout_constraintHorizontal_bias="0.421"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toEndOf="@+id/btn_admi"
         app:layout_constraintTop_toBottomOf="@+id/tv_title"
-        app:srcCompat="@drawable/baseline_add_24" />
+        app:srcCompat="@drawable/baseline_add_24"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <ImageButton
+        android:id="@+id/btn_buscarMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.136"
+        app:layout_constraintStart_toEndOf="@+id/sp_barrioMain"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:srcCompat="@drawable/baseline_search_24" />
+
+    <ImageButton
+        android:id="@+id/btn_limpiarBuscarMain"
+        android:layout_width="44dp"
+        android:layout_height="42dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
+        app:layout_constraintStart_toEndOf="@+id/sp_barrioMain"
+        app:layout_constraintTop_toBottomOf="@+id/btn_buscarMain"
+        app:srcCompat="@android:drawable/ic_search_category_default" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

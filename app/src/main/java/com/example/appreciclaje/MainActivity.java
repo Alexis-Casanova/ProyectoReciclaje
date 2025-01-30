@@ -1,10 +1,13 @@
 package com.example.appreciclaje;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +16,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import Adapters.AdapterPublicacion;
 import Models.Publicacion;
@@ -24,9 +28,12 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
-    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento,btn_ubicaciones;
+    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento,btn_ubicaciones,btn_buscarMain, btn_limpiarBuscarMain;
+    Spinner sp_barrioMain;
     Toolbar tb_main;
+    String buscarBarrio = "";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,12 +45,17 @@ public class MainActivity extends AppCompatActivity {
         btn_registro = findViewById(R.id.btn_registro);
         btn_calendar = findViewById(R.id.btn_calendar);
         btn_agregarEvento= findViewById(R.id.btn_agregarEvento);
+        btn_buscarMain = findViewById(R.id.btn_buscarMain);
+        btn_limpiarBuscarMain = findViewById(R.id.btn_limpiarBuscarMain);
+        sp_barrioMain = findViewById(R.id.sp_barrioMain);
         tb_main = findViewById(R.id.tb_main);
         setSupportActionBar(tb_main);
 
         if(ContextCompat.checkSelfPermission(this, android.Manifest.permission.READ_EXTERNAL_STORAGE)!= PackageManager.PERMISSION_GRANTED){
             ActivityCompat.requestPermissions(this,new String[]{android.Manifest.permission.READ_EXTERNAL_STORAGE},0);
         }
+
+
 
         btn_loginUser.setOnClickListener(v -> {
             Intent oIntento = new Intent(MainActivity.this, ActividadLoginUsuario.class);
@@ -67,11 +79,23 @@ public class MainActivity extends AppCompatActivity {
             Intent oIntento = new Intent(MainActivity.this, RegistrarEvento.class);
             startActivity(oIntento);
         });
+
         btn_ubicaciones.setOnClickListener(v ->{
             Intent oIntento = new Intent(MainActivity.this, ActividadPunto.class);
             startActivity(oIntento);
         });
 
+
+        btn_buscarMain.setOnClickListener(v ->{
+            buscarBarrio = sp_barrioMain.getSelectedItem().toString();
+            mostrarPublicaciones();
+        });
+        btn_limpiarBuscarMain.setOnClickListener(v ->{
+            buscarBarrio = "";
+            sp_barrioMain.setSelection(0);
+            mostrarPublicaciones();
+        });
+        configurarSpinners();
         mostrarPublicaciones();
     }
 
@@ -79,6 +103,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         mostrarPublicaciones();
+    }
+
+    private void configurarSpinners() {
+        String[] tipos = {"San Pedro", "San Sebastían", "El Cumbe", "San Martín"};
+        ArrayAdapter<String> adapterTipo = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, tipos);
+        adapterTipo.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        sp_barrioMain.setAdapter(adapterTipo);
     }
 
     private void mostrarPublicaciones() {
@@ -90,7 +121,12 @@ public class MainActivity extends AppCompatActivity {
             public void onResponse(Call<List<Publicacion>> call, Response<List<Publicacion>> response) {
                 if(response.isSuccessful() && response.body()!=null){
                     List<Publicacion> listaPublicaciones = response.body();
-                    //lv_postMain.setAdapter(new ArrayAdapter<Publicacion>(MainActivity.this, android.R.layout.simple_expandable_list_item_1, listaPublicaciones));
+
+                    if (!buscarBarrio.isEmpty()) {
+                        listaPublicaciones = listaPublicaciones.stream()
+                                .filter(p -> p.getLugar().equalsIgnoreCase(buscarBarrio))
+                                .collect(Collectors.toList());                    }
+
                     AdapterPublicacion adapter = new AdapterPublicacion(MainActivity.this, listaPublicaciones);
                     lv_postMain.setAdapter(adapter);
                 } else{
