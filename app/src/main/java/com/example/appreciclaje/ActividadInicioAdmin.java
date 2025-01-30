@@ -53,7 +53,7 @@ public class ActividadInicioAdmin extends AppCompatActivity {
         btn_addEvent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent oIntento = new Intent(ActividadInicioAdmin.this,RegistrarEvento.class);
+                Intent oIntento = new Intent(ActividadInicioAdmin.this,ActividadCalendarioAdmin.class);
                 startActivity(oIntento);
             }
         });

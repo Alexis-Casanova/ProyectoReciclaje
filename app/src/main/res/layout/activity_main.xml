@@ -38,15 +38,15 @@
         android:id="@+id/lv_post"
         android:layout_width="377dp"
         android:layout_height="409dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView37" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginBottom="30dp"
+        android:layout_marginBottom="10dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -62,8 +62,8 @@
                 android:id="@+id/btn_admi"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
-                android:backgroundTint="#FFFFFF"
                 android:layout_marginLeft="15dp"
+                android:backgroundTint="#FFFFFF"
                 app:srcCompat="@drawable/baseline_admin_panel_settings_24"
                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -172,7 +172,7 @@
         android:id="@+id/cardView37"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintStart_toEndOf="@+id/cardView38"
@@ -190,7 +190,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="4dp"
         android:layout_marginTop="28dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintStart_toEndOf="@+id/cardView37"

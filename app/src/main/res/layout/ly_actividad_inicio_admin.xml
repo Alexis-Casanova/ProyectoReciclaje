@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backwhite"
+    android:background="@drawable/backadmi"
     tools:context=".ActividadInicioAdmin">
 
     <TextView
@@ -42,9 +42,10 @@
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="56dp"
+        android:layout_height="65dp"
         android:layout_marginBottom="15dp"
         android:orientation="horizontal"
+        android:padding="5dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -69,6 +70,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_weight="1"
             app:cardCornerRadius="30dp">
 
@@ -84,6 +86,7 @@
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
+            android:layout_marginLeft="5dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             app:cardCornerRadius="30dp">
