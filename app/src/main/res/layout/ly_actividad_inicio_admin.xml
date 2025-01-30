@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/backadmi"
+    android:background="@drawable/backwhite"
     tools:context=".ActividadInicioAdmin">
 
     <TextView
@@ -60,9 +60,10 @@
                 android:id="@+id/btn_agregarUbicaciones"
                 android:layout_width="56dp"
                 android:layout_height="56dp"
+                android:layout_weight="1"
                 android:background="#ffffff"
                 app:srcCompat="@drawable/baseline_add_location_24"
-                tools:ignore="SpeakableTextPresentCheck" />
+                tools:ignore="SpeakableTextPresentCheck"/>
         </androidx.cardview.widget.CardView>
 
         <androidx.cardview.widget.CardView
