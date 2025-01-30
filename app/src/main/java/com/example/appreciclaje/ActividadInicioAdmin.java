@@ -49,6 +49,14 @@ public class ActividadInicioAdmin extends AppCompatActivity {
                 startActivity(oIntento);
             }
         });
+
+        btn_addEvent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent oIntento = new Intent(ActividadInicioAdmin.this,RegistrarEvento.class);
+                startActivity(oIntento);
+            }
+        });
     }
 
     @Override

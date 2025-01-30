@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -28,7 +29,7 @@ import retrofit2.Response;
 public class ActividadCalendario extends AppCompatActivity {
     Spinner sp_zonaEvento;
     ListView lv_evento;
-    Button btn_filtrar;
+    ImageButton btn_filtrar;
 
     List<Evento> listaEventos = new ArrayList<>();
 
@@ -40,7 +41,7 @@ public class ActividadCalendario extends AppCompatActivity {
 
         sp_zonaEvento = findViewById(R.id.sp_zonaEvento);
         lv_evento = findViewById(R.id.lv_evento);
-        btn_filtrar = findViewById(R.id.btn_filtrar);
+        btn_filtrar = findViewById(R.id.btn_filtro);
 
         configurarSpinners();
         mostrarEventos();

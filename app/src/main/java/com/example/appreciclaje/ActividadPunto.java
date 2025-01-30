@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ import retrofit2.Response;
 public class ActividadPunto extends AppCompatActivity {
 
     ListView lv_Puntos;
-    Button btn_NuevoPunto;
+    ImageButton btn_NuevoPunto;
     private List<Punto> listaPuntos;
 
     @Override

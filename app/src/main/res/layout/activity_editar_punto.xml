@@ -4,64 +4,112 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/backuser"
     tools:context=".EditarPunto">
 
-    <EditText
-        android:id="@+id/et_NombrePuntoEdit"
-        android:layout_width="0dp"
+    <TextView
+        android:id="@+id/textView18"
+        style="@style/tituloTodo"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Nombre"
-        android:minHeight="48dp"
+        android:layout_marginTop="116dp"
+        android:text="¡Modifica tu punto de reciclaje!"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/et_DireccionPuntoEdit"
-        android:layout_width="0dp"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView31"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Dirección"
-        android:minHeight="48dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_NombrePuntoEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView30">
 
-    <EditText
-        android:id="@+id/et_ReferenciaPuntoEdit"
-        android:layout_width="0dp"
+        <EditText
+            android:id="@+id/et_DireccionPuntoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="Dirección"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView32"
+        android:layout_width="360dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:hint="Referencia"
-        android:minHeight="48dp"
+        android:layout_marginTop="30dp"
+        app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/et_DireccionPuntoEdit" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView31">
+
+        <EditText
+            android:id="@+id/et_ReferenciaPuntoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="Referencia"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
+    </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="171dp"
+        android:layout_marginTop="70dp"
         app:cardCornerRadius="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/et_ReferenciaPuntoEdit">
+        app:layout_constraintTop_toBottomOf="@+id/cardView32">
 
         <ImageButton
             android:id="@+id/btn_editarPuntoEdit"
             android:layout_width="56dp"
             android:layout_height="56dp"
             android:background="@color/white"
-            app:srcCompat="@drawable/baseline_save_24"
+            app:srcCompat="@drawable/baseline_edit_24"
             tools:ignore="SpeakableTextPresentCheck" />
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView30"
+        android:layout_width="360dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView18">
+
+        <EditText
+            android:id="@+id/et_NombrePuntoEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:fontFamily="sans-serif-light"
+            android:hint="Nombre"
+            android:minHeight="48dp"
+            android:textAlignment="center" />
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

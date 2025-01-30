@@ -4,6 +4,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,7 +20,7 @@ import retrofit2.Response;
 
 public class ActividadDetallePunto extends AppCompatActivity {
     TextView lb_nombrePuntoDet, lb_direccionPuntoDet, lb_referenciaPuntoDet;
-    Button btn_editarPunto, btn_eliminarPunto;
+    ImageButton btn_editarPunto, btn_eliminarPunto;
     int idPunto;
 
     @Override

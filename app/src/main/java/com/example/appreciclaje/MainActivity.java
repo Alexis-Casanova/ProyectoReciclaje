@@ -28,7 +28,7 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity {
     ListView lv_postMain;
-    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar, btn_agregarEvento,btn_ubicaciones,btn_buscarMain, btn_limpiarBuscarMain;
+    ImageButton btn_loginUser, btn_loginAdmi, btn_registro, btn_calendar,btn_ubicaciones,btn_buscarMain, btn_limpiarBuscarMain;
     Spinner sp_barrioMain;
     Toolbar tb_main;
     String buscarBarrio = "";
@@ -44,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         btn_loginUser=findViewById(R.id.btn_usuario);
         btn_registro = findViewById(R.id.btn_registro);
         btn_calendar = findViewById(R.id.btn_calendar);
-        btn_agregarEvento= findViewById(R.id.btn_agregarEvento);
         btn_buscarMain = findViewById(R.id.btn_buscarMain);
         btn_limpiarBuscarMain = findViewById(R.id.btn_limpiarBuscarMain);
         sp_barrioMain = findViewById(R.id.sp_barrioMain);
@@ -73,10 +72,6 @@ public class MainActivity extends AppCompatActivity {
         });
         btn_calendar.setOnClickListener(v ->{
             Intent oIntento = new Intent(MainActivity.this, ActividadCalendarioAdmin.class);
-            startActivity(oIntento);
-        });
-        btn_agregarEvento.setOnClickListener(v ->{
-            Intent oIntento = new Intent(MainActivity.this, RegistrarEvento.class);
             startActivity(oIntento);
         });
 
