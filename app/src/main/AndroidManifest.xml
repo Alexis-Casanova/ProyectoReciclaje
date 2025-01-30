@@ -23,6 +23,9 @@
             android:name=".ActividadDetallePunto"
             android:exported="false" />
         <activity
+            android:name=".RegistrarPunto"
+            android:exported="false"/>
+        <activity
             android:name=".EliminarEvento"
             android:exported="false" />
         <activity
@@ -52,7 +55,9 @@
         <activity
             android:name=".ActividadInicioAdmin"
             android:exported="false" />
-        <activity android:name=".ActividadPunto" />
+        <activity
+            android:name=".ActividadPunto"
+            android:exported="false"/>
         <activity
             android:name=".DetalleUsuario"
             android:exported="false" />
