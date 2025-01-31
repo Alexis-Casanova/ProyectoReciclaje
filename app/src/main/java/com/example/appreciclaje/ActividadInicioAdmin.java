@@ -18,8 +18,10 @@ import java.util.List;
 
 import Adapters.AdapterPublicacion;
 import Models.Publicacion;
+import Models.Usuario;
 import Network.ApiServicioReciclaje;
 import Network.RetrofitClient;
+import Sesiones.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -30,6 +32,7 @@ public class ActividadInicioAdmin extends AppCompatActivity {
     ImageButton btn_agregarUbicaciones, btn_addEvent, btn_salir;
     public static Publicacion publicacionObtenida = new Publicacion();
     public static List<Publicacion> listaPublicaciones;
+    private Usuario usuarioLogeado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +43,14 @@ public class ActividadInicioAdmin extends AppCompatActivity {
         btn_agregarUbicaciones = findViewById(R.id.btn_agregarUbicaciones);
         btn_addEvent = findViewById(R.id.btn_addEvent);
         btn_salir = findViewById(R.id.btn_salirAdmi);
+
+
+        btn_salir.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioAdmin.this, MainActivity.class);
+            oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(oIntento);
+            Toast.makeText(ActividadInicioAdmin.this, "Sesión Cerrada", Toast.LENGTH_SHORT).show();
+        });
 
         lv_popst.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

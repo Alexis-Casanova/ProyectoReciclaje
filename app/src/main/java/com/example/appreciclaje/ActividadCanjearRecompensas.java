@@ -53,12 +53,15 @@ public class ActividadCanjearRecompensas extends AppCompatActivity {
 
     private void confirmarCambioRecompensa(int costo, String recompensa) {
         String mensaje = "¿Estás seguro de canjear "+ recompensa+" por "+costo+" puntos?";
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirmación")
                 .setMessage(mensaje)
-                .setPositiveButton("Sí", (dialog, which) -> canjearRecompensa(costo,recompensa))
+                .setPositiveButton("Sí", (d, which) -> canjearRecompensa(costo, recompensa))
                 .setNegativeButton("No", null)
                 .show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     private void canjearRecompensa(int costo, String recompensa) {

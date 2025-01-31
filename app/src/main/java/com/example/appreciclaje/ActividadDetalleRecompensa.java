@@ -88,12 +88,15 @@ public class ActividadDetalleRecompensa extends AppCompatActivity {
 
     private void confirmarCambioRecompensa(int cambio) {
         String mensaje = cambio > 0 ? "¿Estás seguro de aumentar 100 puntos?" : "¿Estás seguro de disminuir 100 puntos?";
-        new AlertDialog.Builder(this)
+        AlertDialog dialog = new AlertDialog.Builder(this)
                 .setTitle("Confirmación")
                 .setMessage(mensaje)
-                .setPositiveButton("Sí", (dialog, which) -> actualizarRecompensa(cambio))
+                .setPositiveButton("Sí", (d, which) -> actualizarRecompensa(cambio))
                 .setNegativeButton("No", null)
                 .show();
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
+        dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
     }
 
     private void actualizarRecompensa(int cambio) {
