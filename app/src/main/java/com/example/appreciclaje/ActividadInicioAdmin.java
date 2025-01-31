@@ -29,7 +29,7 @@ import retrofit2.Response;
 public class ActividadInicioAdmin extends AppCompatActivity {
 
     ListView lv_popst;
-    ImageButton btn_agregarUbicaciones, btn_addEvent, btn_salir;
+    ImageButton btn_agregarPuntosUbicaciones, btn_addEvent, btn_salir;
     public static Publicacion publicacionObtenida = new Publicacion();
     public static List<Publicacion> listaPublicaciones;
     private Usuario usuarioLogeado;
@@ -40,10 +40,14 @@ public class ActividadInicioAdmin extends AppCompatActivity {
         setContentView(R.layout.ly_actividad_inicio_admin);
 
         lv_popst = findViewById(R.id.lv_popst);
-        btn_agregarUbicaciones = findViewById(R.id.btn_agregarUbicaciones);
+        btn_agregarPuntosUbicaciones = findViewById(R.id.btn_agregarUbicaciones);
         btn_addEvent = findViewById(R.id.btn_addEvent);
         btn_salir = findViewById(R.id.btn_salirAdmi);
 
+        btn_agregarPuntosUbicaciones.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioAdmin.this, ActividadPunto.class);
+            startActivity(oIntento);
+        });
 
         btn_salir.setOnClickListener(v -> {
             Intent oIntento = new Intent(ActividadInicioAdmin.this, MainActivity.class);

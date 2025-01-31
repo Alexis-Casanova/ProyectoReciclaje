@@ -28,8 +28,8 @@ public class ActividadInicioUsuario extends AppCompatActivity {
 
     ListView lv_postUsuario;
     TextView txt_titulo_usuario;
-    ImageButton btn_editarUsuario, btn_detalleUsuario, btn_agregarPostUsuario;
-    ImageButton btn_buscarUsuario, btn_limpiarBuscarUsuario;
+    ImageButton btn_detalleUsuario, btn_agregarPostUsuario, btn_ubiUser, btn_calendarUser;
+    ImageButton btn_buscarUsuario, btn_limpiarBuscarUsuario, btn_logout;
     Spinner sp_barrioUsuario;
     private String buscarTipo = "";
     private Usuario usuarioLogeado;
@@ -45,6 +45,9 @@ public class ActividadInicioUsuario extends AppCompatActivity {
         btn_detalleUsuario = findViewById(R.id.btn_detalleUsuario);
         btn_buscarUsuario = findViewById(R.id.btn_buscarUsuario);
         btn_limpiarBuscarUsuario = findViewById(R.id.btn_limpiarBuscarUsuario);
+        btn_ubiUser = findViewById(R.id.btn_ubiUser);
+        btn_calendarUser = findViewById(R.id.btn_calendarUser);
+        btn_logout = findViewById(R.id.btn_logOutIniUsuario);
         sp_barrioUsuario = findViewById(R.id.sp_usuario_barrio);
 
         configurarSpinners();
@@ -81,6 +84,22 @@ public class ActividadInicioUsuario extends AppCompatActivity {
             mostrarPublicaciones();
         });
 
+        btn_ubiUser.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioUsuario.this, ActividadPunto.class);
+            startActivity(oIntento);
+        });
+
+        btn_calendarUser.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioUsuario.this, ActividadCalendario.class);
+            startActivity(oIntento);
+        });
+
+        btn_logout.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadInicioUsuario.this, MainActivity.class);
+            oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(oIntento);
+            Toast.makeText(ActividadInicioUsuario.this, "Sesión Cerrada", Toast.LENGTH_SHORT).show();
+        });
         mostrarPublicaciones();
     }
 
