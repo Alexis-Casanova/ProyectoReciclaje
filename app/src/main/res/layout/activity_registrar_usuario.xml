@@ -133,7 +133,7 @@
             android:id="@+id/imgRegistrarUsuario"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            tools:srcCompat="@tools:sample/avatars" />
+            android:background="@drawable/baseline_account_circle_24" />
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView

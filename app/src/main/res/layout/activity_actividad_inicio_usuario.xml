@@ -28,16 +28,16 @@
 
     <ListView
         android:id="@+id/lv_usuario_post"
-        android:layout_width="wrap_content"
-        android:layout_height="377dp"
-        android:layout_marginEnd="4dp"
+        android:layout_width="391dp"
+        android:layout_height="382dp"
         android:divider="@color/greyLight"
         android:dividerHeight="1dp"
         android:padding="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/cardView3"
-        app:layout_constraintVertical_bias="0.116" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <TextView
         android:id="@+id/textView6"
@@ -54,6 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/lv_usuario_post" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardView46"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="36dp"
@@ -199,6 +200,23 @@
                 tools:ignore="SpeakableTextPresentCheck" />
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="70dp"
+        android:layout_marginEnd="32dp"
+        app:cardCornerRadius="30dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView6">
+
+        <ImageButton
+            android:id="@+id/imageButton"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@color/white"
+            app:srcCompat="@drawable/baseline_logout_24" />
+    </androidx.cardview.widget.CardView>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
