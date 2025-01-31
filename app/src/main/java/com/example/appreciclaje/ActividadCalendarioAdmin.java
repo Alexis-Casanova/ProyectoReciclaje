@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import Adapters.AdapterEvento;
 import Models.Evento;
@@ -28,22 +30,35 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
 
     Spinner sp_zonaEvento;
     ListView lv_evento;
-    ImageButton btn_filtrar;
-
+    ImageButton btn_filtrar, btn_limpiarfiltroAdmi;
     List<Evento> listaEventos = new ArrayList<>();
+    String zonaSeleccionada = "";
 
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.ly_actividad_calendario);
+        setContentView(R.layout.ly_actividad_calendario_admin);
 
         sp_zonaEvento = findViewById(R.id.sp_zonaEvento);
         lv_evento = findViewById(R.id.lv_evento);
         btn_filtrar = findViewById(R.id.btn_filtrar);
+        btn_limpiarfiltroAdmi = findViewById(R.id.btn_limpiarfiltroAdmi);
 
         configurarSpinners();
         mostrarEventos();
+
+        btn_filtrar.setOnClickListener(v -> {
+            zonaSeleccionada = sp_zonaEvento.getSelectedItem().toString();
+            mostrarEventos();
+        });
+
+        btn_limpiarfiltroAdmi.setOnClickListener(v -> {
+            zonaSeleccionada = "";
+            sp_zonaEvento.setSelection(0);
+            mostrarEventos();
+        });
 
         lv_evento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -59,8 +74,8 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
                 startActivity(oIntento);
             }
         });
-
     }
+
     @Override
     protected void onResume() {
         super.onResume();
@@ -76,7 +91,6 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
 
     private void mostrarEventos() {
         ApiServicioReciclaje apiServicio = RetrofitClient.getCliente().create(ApiServicioReciclaje.class);
-
         Call<List<Evento>> call = apiServicio.getEventos();
         call.enqueue(new Callback<List<Evento>>() {
             @Override
@@ -84,9 +98,14 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
                 if (response.isSuccessful() && response.body() != null) {
                     listaEventos = response.body();
 
+                    if (!zonaSeleccionada.isEmpty()) {
+                        listaEventos = listaEventos.stream()
+                                .filter(e -> e.getLugar().equalsIgnoreCase(zonaSeleccionada))
+                                .collect(Collectors.toList());
+                    }
+
                     AdapterEvento adapter = new AdapterEvento(ActividadCalendarioAdmin.this, listaEventos);
-                    ListView lvEventos = findViewById(R.id.lv_evento);
-                    lvEventos.setAdapter(adapter);
+                    lv_evento.setAdapter(adapter);
                 } else {
                     Toast.makeText(ActividadCalendarioAdmin.this, "No se pudo conectar con la API", Toast.LENGTH_SHORT).show();
                 }
