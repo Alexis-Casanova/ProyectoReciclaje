@@ -14,14 +14,14 @@
         android:id="@+id/txt_titulo_usuario"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:fontFamily="sans-serif-light"
         android:paddingBottom="8dp"
         android:text="¡Bienvenido, @Usuario!"
         android:textColor="@color/black"
         android:textSize="22sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="SpeakableTextPresentCheck" />
@@ -164,12 +164,12 @@
         android:layout_width="wrap_content"
         android:layout_height="70dp"
         android:layout_gravity="center"
-        android:layout_marginStart="11dp"
-        android:layout_marginTop="61dp"
+        android:layout_marginTop="13dp"
         android:orientation="horizontal"
         android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6">
+        app:layout_constraintTop_toBottomOf="@+id/cardView46">
 
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
