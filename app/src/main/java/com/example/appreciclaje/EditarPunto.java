@@ -91,6 +91,7 @@ public class EditarPunto extends AppCompatActivity {
                             if (response.isSuccessful()) {
                                 Toast.makeText(EditarPunto.this, "Punto actualizado correctamente.", Toast.LENGTH_SHORT).show();
                                 Intent intent = new Intent(EditarPunto.this, ActividadPunto.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(EditarPunto.this, "Error al actualizar el punto.", Toast.LENGTH_SHORT).show();

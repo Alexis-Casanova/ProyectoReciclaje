@@ -1,5 +1,6 @@
 package com.example.appreciclaje;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
@@ -56,6 +57,9 @@ public class RegistrarPunto extends AppCompatActivity {
                         public void onResponse(Call<Punto> call, Response<Punto> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(RegistrarPunto.this, "Ubicación registrada correctamente", Toast.LENGTH_SHORT).show();
+                                Intent oIntento = new Intent(RegistrarPunto.this, ActividadPunto.class);
+                                oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(oIntento);
                             } else {
                                 Toast.makeText(RegistrarPunto.this, "Error al registrar la ubicación", Toast.LENGTH_SHORT).show();
                             }
