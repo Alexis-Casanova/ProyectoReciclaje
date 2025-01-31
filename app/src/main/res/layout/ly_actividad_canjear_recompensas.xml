@@ -35,7 +35,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_puntos"
+                android:id="@+id/txt_puntosRecompensas"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
@@ -92,7 +92,7 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageButton
-                    android:id="@+id/btn_canjear2"
+                    android:id="@+id/btn_canjearBolsa"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:background="@color/white"
@@ -148,7 +148,7 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageButton
-                    android:id="@+id/btn_canjear"
+                    android:id="@+id/btn_canjearCamiseta"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:background="@color/white"
@@ -204,7 +204,7 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageButton
-                    android:id="@+id/btn_canjear4"
+                    android:id="@+id/btn_canjearGorra"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:background="@color/white"
@@ -259,7 +259,7 @@
                 app:cardCornerRadius="30dp">
 
                 <ImageButton
-                    android:id="@+id/btn_canjear5"
+                    android:id="@+id/btn_canjearCupon"
                     android:layout_width="56dp"
                     android:layout_height="56dp"
                     android:background="@color/white"
