@@ -75,7 +75,8 @@ public class DetalleUsuario extends AppCompatActivity {
                         public void onResponse(Call<Void> call, Response<Void> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(DetalleUsuario.this, "Usuario eliminado correctamente.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(DetalleUsuario.this, MainActivity.class); // Cambia a la actividad que corresponda
+                                Intent intent = new Intent(DetalleUsuario.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                                 finish();
                             } else {

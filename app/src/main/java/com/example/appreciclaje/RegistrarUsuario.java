@@ -138,6 +138,9 @@ public class RegistrarUsuario extends AppCompatActivity {
                         public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(RegistrarUsuario.this, "Usuario registrado correctamente", Toast.LENGTH_SHORT).show();
+                                Intent oIntento = new Intent(RegistrarUsuario.this, ActividadLoginUsuario.class);
+                                oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(oIntento);
                             } else {
                                 Toast.makeText(RegistrarUsuario.this, "Error al registrar el usuario", Toast.LENGTH_SHORT).show();
                             }

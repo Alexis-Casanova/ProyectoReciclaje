@@ -114,6 +114,11 @@ public class EditarUsuario extends AppCompatActivity {
         String lugar = txtLugar.getText().toString();
         String dni = txtDni.getText().toString();
 
+        if (nombre.isEmpty() || lugar.isEmpty() || dni.isEmpty()) {
+            Toast.makeText(this, "Por favor, completa todos los campos.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         Usuario usuarioActualizado = new Usuario(
                 usuarioId, nombre, usuarioLogeado.getEmail(), dni, lugar,
                 usuarioLogeado.getRol(), usuarioLogeado.getRecompensa(), usuarioLogeado.getRutaUsuario(), usuarioLogeado.getContrasena()
