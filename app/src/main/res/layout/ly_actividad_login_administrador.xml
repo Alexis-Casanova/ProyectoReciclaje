@@ -52,7 +52,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-light"
             android:hint="Ingrese su email:"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:textAlignment="center" />
     </androidx.cardview.widget.CardView>
 
@@ -76,7 +76,7 @@
             android:ems="10"
             android:fontFamily="sans-serif-light"
             android:hint="Ingrese su contraseña:"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:textAlignment="center" />
     </androidx.cardview.widget.CardView>
 

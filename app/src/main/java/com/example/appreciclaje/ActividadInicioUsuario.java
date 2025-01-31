@@ -16,8 +16,10 @@ import java.util.stream.Collectors;
 
 import Adapters.AdapterPublicacion;
 import Models.Publicacion;
+import Models.Usuario;
 import Network.ApiServicioReciclaje;
 import Network.RetrofitClient;
+import Sesiones.SessionManager;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -25,11 +27,12 @@ import retrofit2.Response;
 public class ActividadInicioUsuario extends AppCompatActivity {
 
     ListView lv_postUsuario;
-    TextView txt_tituloUsuario;
+    TextView txt_titulo_usuario;
     ImageButton btn_editarUsuario, btn_detalleUsuario, btn_agregarPostUsuario;
     ImageButton btn_buscarUsuario, btn_limpiarBuscarUsuario;
     Spinner sp_barrioUsuario;
     private String buscarTipo = "";
+    private Usuario usuarioLogeado;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +40,7 @@ public class ActividadInicioUsuario extends AppCompatActivity {
         setContentView(R.layout.activity_actividad_inicio_usuario);
 
         lv_postUsuario = findViewById(R.id.lv_usuario_post);
-        txt_tituloUsuario = findViewById(R.id.txt_titulo_usuario);
+        txt_titulo_usuario = findViewById(R.id.txt_titulo_usuario);
         btn_agregarPostUsuario = findViewById(R.id.btn_agregar_postUsuario);
         btn_detalleUsuario = findViewById(R.id.btn_detalleUsuario);
         btn_buscarUsuario = findViewById(R.id.btn_buscarUsuario);
@@ -45,6 +48,17 @@ public class ActividadInicioUsuario extends AppCompatActivity {
         sp_barrioUsuario = findViewById(R.id.sp_usuario_barrio);
 
         configurarSpinners();
+
+        SessionManager sessionManager = new SessionManager(this);
+        usuarioLogeado = sessionManager.getUsuarioDetalles();
+
+        if (usuarioLogeado == null) {
+            Toast.makeText(this, "Debe iniciar sesión para editar el perfil.", Toast.LENGTH_SHORT).show();
+            finish();
+            return;
+        }
+        txt_titulo_usuario.setText("Bienvenido, " + usuarioLogeado.getNombre().split(" ")[0] + "!");
+
 
         btn_detalleUsuario.setOnClickListener(v -> {
             Intent oIntento = new Intent(ActividadInicioUsuario.this, DetalleUsuario.class);
