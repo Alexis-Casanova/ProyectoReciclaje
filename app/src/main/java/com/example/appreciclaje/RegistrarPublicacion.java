@@ -171,6 +171,10 @@ public class RegistrarPublicacion extends AppCompatActivity {
                         public void onResponse(Call<Publicacion> call, Response<Publicacion> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(RegistrarPublicacion.this, "Publicación realizada correctamente", Toast.LENGTH_SHORT).show();
+                                Intent oIntento = new Intent(RegistrarPublicacion.this, ActividadInicioUsuario.class);
+                                oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                limpiarCampos();
+                                startActivity(oIntento);
                             } else {
                                 Toast.makeText(RegistrarPublicacion.this, "Error al publicar", Toast.LENGTH_SHORT).show();
                             }
@@ -189,5 +193,12 @@ public class RegistrarPublicacion extends AppCompatActivity {
 
         dialog.getButton(AlertDialog.BUTTON_POSITIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_green_dark));
         dialog.getButton(AlertDialog.BUTTON_NEGATIVE).setBackgroundColor(getResources().getColor(android.R.color.holo_red_dark));
+    }
+    private void limpiarCampos() {
+        spTipoPost.setSelection(0);
+        spLugarPost.setSelection(0);
+        etDescripcionPost.setText("");
+        imgPost.setImageDrawable(null);
+        rutaImagenSeleccionada = null;
     }
 }
