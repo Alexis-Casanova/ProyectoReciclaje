@@ -73,7 +73,8 @@ public class RegistrarEvento extends AppCompatActivity {
                             if (response.isSuccessful()) {
                                 Toast.makeText(RegistrarEvento.this, "Evento registrado exitosamente.", Toast.LENGTH_SHORT).show();
                                 limpiarFormulario();
-                                Intent oIntento = new Intent(RegistrarEvento.this, ActividadCalendario.class);
+                                Intent oIntento = new Intent(RegistrarEvento.this, ActividadCalendarioAdmin.class);
+                                oIntento.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(oIntento);
                             } else {
                                 Toast.makeText(RegistrarEvento.this, "Error al registrar el evento.", Toast.LENGTH_SHORT).show();

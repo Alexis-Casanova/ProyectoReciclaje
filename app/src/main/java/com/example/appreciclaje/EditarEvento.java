@@ -98,7 +98,8 @@ public class EditarEvento extends AppCompatActivity {
                         public void onResponse(Call<Evento> call, Response<Evento> response) {
                             if (response.isSuccessful()) {
                                 Toast.makeText(EditarEvento.this, "Evento actualizado correctamente.", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(EditarEvento.this, ActividadCalendario.class);
+                                Intent intent = new Intent(EditarEvento.this, ActividadCalendarioAdmin.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             } else {
                                 Toast.makeText(EditarEvento.this, "Error al actualizar el evento.", Toast.LENGTH_SHORT).show();

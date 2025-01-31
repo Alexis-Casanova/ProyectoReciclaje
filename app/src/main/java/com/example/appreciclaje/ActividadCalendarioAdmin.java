@@ -30,7 +30,7 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
 
     Spinner sp_zonaEvento;
     ListView lv_evento;
-    ImageButton btn_filtrar, btn_limpiarfiltroAdmi;
+    ImageButton btn_filtrar, btn_limpiarfiltroAdmi, btn_agregarEvento;
     List<Evento> listaEventos = new ArrayList<>();
     String zonaSeleccionada = "";
 
@@ -45,6 +45,7 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
         lv_evento = findViewById(R.id.lv_evento);
         btn_filtrar = findViewById(R.id.btn_filtrar);
         btn_limpiarfiltroAdmi = findViewById(R.id.btn_limpiarfiltroAdmi);
+        btn_agregarEvento = findViewById(R.id.btn_agregarEvento);
 
         configurarSpinners();
         mostrarEventos();
@@ -58,6 +59,11 @@ public class ActividadCalendarioAdmin extends AppCompatActivity {
             zonaSeleccionada = "";
             sp_zonaEvento.setSelection(0);
             mostrarEventos();
+        });
+
+        btn_agregarEvento.setOnClickListener(v -> {
+            Intent oIntento = new Intent(ActividadCalendarioAdmin.this, RegistrarEvento.class);
+            startActivity(oIntento);
         });
 
         lv_evento.setOnItemClickListener(new AdapterView.OnItemClickListener() {
