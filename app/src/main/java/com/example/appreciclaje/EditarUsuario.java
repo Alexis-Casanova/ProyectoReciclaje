@@ -61,7 +61,7 @@ public class EditarUsuario extends AppCompatActivity {
         cargarDatosUsuario();
 
         imgUsuario.setOnClickListener(v -> seleccionarImagen());
-        btnActualizar.setOnClickListener(v -> actualizarUsuario());
+        btnActualizar.setOnClickListener(v -> obtenerRutaExterna());
     }
 
     private void cargarDatosUsuario() {
@@ -91,11 +91,11 @@ public class EditarUsuario extends AppCompatActivity {
         if (requestCode == 100 && resultCode == RESULT_OK && data != null) {
             Uri uriImagen = data.getData();
             imgUsuario.setImageURI(uriImagen);
-            rutaImagenSeleccionada = obtenerRutaRealDeImagen(uriImagen);
+            rutaImagenSeleccionada = obtenerRutaNativa(uriImagen);
         }
     }
 
-    private String obtenerRutaRealDeImagen(Uri uri) {
+    private String obtenerRutaNativa(Uri uri) {
         String[] projection = {MediaStore.Images.Media.DATA};
         Cursor cursor = getContentResolver().query(uri, projection, null, null, null);
         if (cursor != null) {
@@ -108,7 +108,7 @@ public class EditarUsuario extends AppCompatActivity {
         return null;
     }
 
-    private void actualizarUsuario() {
+    private void obtenerRutaExterna() {
         int usuarioId = usuarioLogeado.getIdUsuario();
         String nombre = txtNombre.getText().toString();
         String lugar = txtLugar.getText().toString();
@@ -168,8 +168,6 @@ public class EditarUsuario extends AppCompatActivity {
             public void onResponse(Call<Usuario> call, Response<Usuario> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(EditarUsuario.this, "Usuario actualizado correctamente.", Toast.LENGTH_SHORT).show();
-                    //SessionManager sessionManager = new SessionManager(EditarUsuario.this);
-                    //sessionManager.crearLoginSession(response.body());
 
                     Intent intent = new Intent(EditarUsuario.this, DetalleUsuario.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
